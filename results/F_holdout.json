@@ -1,0 +1,189 @@
+{
+ "models": [
+  [
+   "Claude 3 Opus (Inspect)",
+   "2024-03-04",
+   1.9827060797562508
+  ],
+  [
+   "Claude 3.5 Sonnet (New) (Inspect)",
+   "2024-10-22",
+   4.359180287873367
+  ],
+  [
+   "Claude 3.5 Sonnet (Old) (Inspect)",
+   "2024-06-20",
+   3.5102315662721715
+  ],
+  [
+   "Claude 3.7 Sonnet (Inspect)",
+   "2025-02-24",
+   5.91618295028683
+  ],
+  [
+   "Claude 4 Opus (Inspect)",
+   "2025-05-22",
+   6.649219822149796
+  ],
+  [
+   "Claude 4.1 Opus (Inspect)",
+   "2025-08-05",
+   6.650646892323667
+  ],
+  [
+   "Claude Opus 4.5 (Inspect)",
+   "2025-11-24",
+   8.194766804497915
+  ],
+  [
+   "Claude Opus 4.6 (Inspect)",
+   "2026-02-05",
+   9.489687638695818
+  ],
+  [
+   "GPT-4 0314",
+   "2023-03-14",
+   1.9953706525674073
+  ],
+  [
+   "GPT-4 1106 (Inspect)",
+   "2023-11-06",
+   2.016086741735198
+  ],
+  [
+   "GPT-4 Turbo (Inspect)",
+   "2024-04-09",
+   1.9002361648992148
+  ],
+  [
+   "GPT-4o (Inspect)",
+   "2024-05-13",
+   2.805431228075442
+  ],
+  [
+   "GPT-5 (Inspect)",
+   "2025-08-07",
+   7.665305063596891
+  ],
+  [
+   "GPT-5.1-Codex-Max (Inspect)",
+   "2025-11-19",
+   7.805592373838808
+  ],
+  [
+   "GPT-5.2",
+   "2025-12-11",
+   8.460441948718234
+  ],
+  [
+   "GPT-5.3-Codex",
+   "2026-02-05",
+   8.449126088268441
+  ],
+  [
+   "Gemini 3 Pro",
+   "2025-11-18",
+   7.809574349880434
+  ],
+  [
+   "o1 (Inspect)",
+   "2024-12-05",
+   5.279130371570739
+  ],
+  [
+   "o1-preview",
+   "2024-09-12",
+   4.345499442423361
+  ],
+  [
+   "o3 (Inspect)",
+   "2025-04-16",
+   6.903671345146718
+  ]
+ ],
+ "pre_cutoff_sota": [
+  "GPT-4 0314",
+  "GPT-4 1106 (Inspect)",
+  "GPT-4o (Inspect)",
+  "Claude 3.5 Sonnet (Old) (Inspect)",
+  "o1-preview",
+  "Claude 3.5 Sonnet (New) (Inspect)",
+  "o1 (Inspect)",
+  "Claude 3.7 Sonnet (Inspect)",
+  "o3 (Inspect)",
+  "GPT-5 (Inspect)",
+  "Gemini 3 Pro",
+  "Claude Opus 4.5 (Inspect)"
+ ],
+ "pre_linear": {
+  "n": 12,
+  "slope_doublings_per_yr": 2.669904288800429,
+  "doubling_days": 136.8026567589449,
+  "resid_sd": 0.6717873750392679
+ },
+ "pre_quad_coef": 0.6319119789009546,
+ "holdout": [
+  {
+   "model": "Claude Opus 4.6 (Inspect)",
+   "date": "2026-02-05",
+   "observed_log2h": 9.489687638695818,
+   "linear_forecast": 8.41276331497032,
+   "pi95": [
+    6.704186442989534,
+    10.121340186951105
+   ],
+   "above_upper_pi": false,
+   "below_lower_pi": false,
+   "quad_forecast": 9.337236454613766,
+   "observed_minus_linear": 1.076924323725498
+  },
+  {
+   "model": "GPT-5.2",
+   "date": "2025-12-11",
+   "observed_log2h": 8.460441948718234,
+   "linear_forecast": 8.003414539685377,
+   "pi95": [
+    6.328238027088537,
+    9.678591052282217
+   ],
+   "above_upper_pi": false,
+   "below_lower_pi": false,
+   "quad_forecast": 8.66214630987704,
+   "observed_minus_linear": 0.45702740903285743
+  },
+  {
+   "model": "GPT-5.3-Codex",
+   "date": "2026-02-05",
+   "observed_log2h": 8.449126088268441,
+   "linear_forecast": 8.41276331497032,
+   "pi95": [
+    6.704186442989534,
+    10.121340186951105
+   ],
+   "above_upper_pi": false,
+   "below_lower_pi": false,
+   "quad_forecast": 9.337236454613766,
+   "observed_minus_linear": 0.0363627732981211
+  }
+ ],
+ "hb_pre_cutoff_v1_1": {
+  "lo": 0.27486614264021214,
+  "hi": 1.1697500698795582,
+  "reject": true,
+  "nvalid": 400,
+  "lo_all": 0.38550888119266197,
+  "hi_all": 1.0195932513855572,
+  "reject_all": true,
+  "rej_up": true
+ },
+ "hb_all_v1_1_posthoc": {
+  "lo": 0.31073043260447386,
+  "hi": 1.2052481239972177,
+  "reject": true,
+  "nvalid": 400,
+  "lo_all": 0.31070317304522,
+  "hi_all": 1.0160820468305052,
+  "reject_all": true,
+  "rej_up": true
+ }
+}

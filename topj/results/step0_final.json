@@ -1,0 +1,143 @@
+{
+ "1.0": {
+  "models": 33,
+  "records": 17,
+  "nonrecords": 16,
+  "m": 4,
+  "comb": 1820,
+  "tuples": 65536,
+  "lo": -4.216512519192272,
+  "lo_flag": "observed y min -4.2165 < 0; lo set to observed min",
+  "y_min": -4.216512519192272,
+  "y_max": 7.947233903516006
+ },
+ "1.1": {
+  "models": 20,
+  "records": 14,
+  "nonrecords": 6,
+  "m": 2,
+  "comb": 15,
+  "tuples": 36,
+  "lo": 0.0,
+  "lo_flag": null,
+  "y_min": 1.9002361648992148,
+  "y_max": 9.489687638695818
+ },
+ "heldout_chosen": [
+  "Chess Puzzles",
+  "FrontierMath-2025-02-28-Private",
+  "WeirdML"
+ ],
+ "epoch_rows_sorted_by_sha": [
+  [
+   "Chess Puzzles",
+   169,
+   153
+  ],
+  [
+   "FrontierMath-2025-02-28-Private",
+   95,
+   80
+  ],
+  [
+   "WeirdML",
+   140,
+   123
+  ],
+  [
+   "SimpleQA Verified",
+   101,
+   92
+  ],
+  [
+   "Mystery Game Puzzles",
+   144,
+   135
+  ],
+  [
+   "METR Time Horizons",
+   45,
+   24
+  ],
+  [
+   "LMCA",
+   204,
+   181
+  ],
+  [
+   "Balrog",
+   40,
+   31
+  ],
+  [
+   "OTIS Mock AIME 2024-2025",
+   131,
+   114
+  ],
+  [
+   "SimpleBench",
+   120,
+   105
+  ],
+  [
+   "TriviaQA",
+   38,
+   30
+  ],
+  [
+   "OpenBookQA",
+   42,
+   32
+  ],
+  [
+   "MMLU",
+   135,
+   127
+  ],
+  [
+   "FrontierMath-Tiers-1-3-v2-Private",
+   65,
+   53
+  ],
+  [
+   "Aider polyglot",
+   71,
+   60
+  ],
+  [
+   "Winogrande",
+   80,
+   71
+  ],
+  [
+   "GPQA diamond",
+   179,
+   166
+  ],
+  [
+   "GSO-Bench",
+   42,
+   29
+  ],
+  [
+   "FrontierMath-Tier-4-2025-07-01-Private",
+   72,
+   60
+  ],
+  [
+   "ARC-AGI",
+   103,
+   90
+  ],
+  [
+   "ARC-AGI-2",
+   149,
+   131
+  ],
+  [
+   "MATH level 5",
+   60,
+   52
+  ]
+ ]
+}

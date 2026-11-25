@@ -1,0 +1,32 @@
+REPRO GATE: rows 46000 mismatches 0 max |lo diff| 0.0
+
+| series | iid 2s N0 | iid 1s N0 | mb 2s N0 | mb 1s N0 | mb 1s P1 | cl 1s N0 |
+|---|---|---|---|---|---|---|
+| aider_polyglot | 19.7 | 5.4 | 8.7 | 0.1 | 0.1 | 0.2 |
+| arc_agi_2 | 28.0 | 1.8 | 27.1 | 0.0 | 0.0 | 0.0 |
+| arc_agi | 8.6 | 2.1 | 5.4 | 0.5 | 0.1 | 0.3 |
+| balrog | 15.0 | 1.2 | 31.2 | 0.0 | 0.0 | 0.0 |
+| chess_puzzles | 14.4 | 3.9 | 5.4 | 0.4 | 0.6 | 0.2 |
+| frontiermath | 19.9 | 1.6 | 38.1 | 0.0 | 0.0 | 0.0 |
+| frontiermath_tier_4 | 13.0 | 5.3 | 6.0 | 0.3 | 0.0 | 0.1 |
+| frontiermath_tiers_1_3_v2 | 10.2 | 3.8 | 3.7 | 0.7 | 0.4 | 0.2 |
+| gpqa_diamond | 26.4 | 1.8 | 26.6 | 0.0 | 0.0 | 0.0 |
+| gso | 12.4 | 3.3 | 8.5 | 0.2 | 0.2 | nan |
+| lmca | 32.3 | 0.9 | 35.4 | 0.1 | 0.0 | 0.0 |
+| math_level_5 | 5.3 | 4.4 | 3.1 | 1.9 | 2.2 | 0.4 |
+| metr_time_horizons | 18.0 | 26.7 | 3.7 | 3.7 | 3.1 | nan |
+| mmlu | 16.1 | 1.5 | 16.6 | 0.2 | 0.2 | 0.0 |
+| mystery_game_puzzles | 12.6 | 16.7 | 3.7 | 11.2 | 13.5 | 2.3 |
+| open_book_qa | 9.9 | 11.6 | 5.5 | 7.1 | 2.7 | 6.5 |
+| otis_mock_aime_2024_2025 | 16.4 | 2.6 | 15.3 | 0.0 | 0.4 | 0.0 |
+| simplebench | 21.3 | 2.0 | 24.3 | 0.0 | 0.0 | 0.0 |
+| simpleqa_verified | 17.9 | 1.3 | 7.4 | 0.1 | 0.1 | 0.0 |
+| trivia_qa | 5.4 | 1.5 | 12.8 | 1.3 | 0.5 | 1.1 |
+| weirdml | 13.8 | 3.9 | 8.1 | 0.3 | 0.2 | 0.0 |
+| wino_grande | 10.9 | 7.8 | 1.8 | 0.4 | 0.5 | 0.4 |
+| metr_time_horizons | 18.6 | 25.1 | 4.7 | 4.6 | 2.7 | nan |
+iid N0 one-sided: oversized / consistent / not measured = {'oversized': 3, 'consistent': 11, 'undersized_CPhi_below_3': 8, 'other': 0, 'not_measured': 0} ; two-sided = {'oversized': 18, 'consistent': 3, 'undersized_CPhi_below_3': 0, 'other': 1, 'not_measured': 0} ; consistent on both N0 and P1 (one-sided): 9 of 22
+mb N0 one-sided: oversized / consistent / not measured = {'oversized': 1, 'consistent': 3, 'undersized_CPhi_below_3': 18, 'other': 0, 'not_measured': 0} ; two-sided = {'oversized': 9, 'consistent': 11, 'undersized_CPhi_below_3': 1, 'other': 1, 'not_measured': 0} ; consistent on both N0 and P1 (one-sided): 3 of 22
+cl N0 one-sided: oversized / consistent / not measured = {'oversized': 0, 'consistent': 2, 'undersized_CPhi_below_3': 18, 'other': 0, 'not_measured': 2} ; two-sided = {'oversized': 4, 'consistent': 10, 'undersized_CPhi_below_3': 6, 'other': 0, 'not_measured': 2} ; consistent on both N0 and P1 (one-sided): 2 of 22
+METR ref mb: N0 two-sided 4.7 one-sided 4.6 (2.5% tail 2.3); P1 one-sided 2.7 n 875 CP (np.float64(0.03285663370165343), np.float64(0.061732356654724936))
+METR ref iid N0 two 18.6 one 25.1

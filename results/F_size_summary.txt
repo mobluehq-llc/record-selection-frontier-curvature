@@ -1,0 +1,8 @@
+T-iid (SOTA, F-test t^2, two-sided 5%): 279/1000 = 27.90%  CP95 [25.14, 30.79]%
+T-hb (SOTA, B=400 percentile 95% CI excludes 0): 354/1000 = 35.40%  CP95 [32.43, 38.45]%
+[secondary] T-hb one-sided upward (lo>0): 340/1000 = 34.00%  CP95 [31.06, 37.03]%
+[secondary] T-iid all-models regression: 87/1000 = 8.70%  CP95 [7.03, 10.62]%
+[secondary] T-hb all-models regression: 239/1000 = 23.90%  CP95 [21.29, 26.67]%
+datasets with nS<4 (T-iid undefined): 0; hb invalid(<50% valid reps): 0; mean nSOTA 11.3
+VERDICT bar(1) T-iid size>10% & CP-lower>7%: BAR1_PASS
+VERDICT bar(2) T-hb size in [3,7]%: BAR2_FAIL  (CP interval [32.43,38.45]% not inside [3,7])

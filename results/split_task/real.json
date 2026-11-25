@@ -1,0 +1,74 @@
+{
+ "exactness": 0.0,
+ "n_splits": 200,
+ "n_estimable_directions": 400,
+ "of": 400,
+ "est_splits": 200,
+ "mean": {
+  "D1": -0.007884455494293351,
+  "D2": 0.041190174292431526,
+  "D3": 0.03330571879813817,
+  "CXs": 0.6571864973658981,
+  "CYs": 0.6650709528601915,
+  "CYa": 0.62388077856776,
+  "CYr": 0.6571864973658981,
+  "r": 0.7841858131077614
+ },
+ "sd_across_splits": {
+  "D1": 0.0485515048671915,
+  "D2": 0.036634938799578805,
+  "D3": 0.03878705078297192,
+  "CXs": 0.04505748534707715,
+  "CYs": 0.0432286982509582,
+  "CYa": 0.020121754204083124,
+  "CYr": 0.04505748534707715,
+  "r": 0.08262193128633423
+ },
+ "invalid_frac": {
+  "Claude 3 Opus (Inspect)": 0.0,
+  "Claude 3.5 Sonnet (New) (Inspect)": 0.0,
+  "Claude 3.5 Sonnet (Old) (Inspect)": 0.0,
+  "Claude 3.7 Sonnet (Inspect)": 0.0,
+  "Claude 4 Opus (Inspect)": 0.0,
+  "Claude 4.1 Opus (Inspect)": 0.0,
+  "Claude Opus 4.5 (Inspect)": 0.0,
+  "Claude Opus 4.6 (Inspect)": 0.0,
+  "GPT-4 0314": 0.0,
+  "GPT-4 1106 (Inspect)": 0.0,
+  "GPT-4 Turbo (Inspect)": 0.0,
+  "GPT-4o (Inspect)": 0.0,
+  "GPT-5 (Inspect)": 0.0,
+  "GPT-5.1-Codex-Max (Inspect)": 0.0,
+  "GPT-5.2": 0.0,
+  "GPT-5.3-Codex": 0.0,
+  "Gemini 3 Pro": 0.0,
+  "o1 (Inspect)": 0.0,
+  "o1-preview": 0.0,
+  "o3 (Inspect)": 0.0
+ },
+ "balance": {
+  "mean_abs_dx": 0.9816188808643679,
+  "max_abs_dx": 2.651048760289564,
+  "mean_abs_ntask": 18.07
+ },
+ "lodo": {
+  "Anthropic": {
+   "D1": 0.05118304537248344,
+   "D2": -0.052026447476923116,
+   "D3": -0.0008434021044396747,
+   "n_est_splits": 200
+  },
+  "OpenAI": {
+   "D1": -0.017657657189690243,
+   "D2": -0.06412371132609485,
+   "D3": -0.08178136851578507,
+   "n_est_splits": 200
+  },
+  "Google": {
+   "D1": -0.015760778361998143,
+   "D2": 0.04395710718821979,
+   "D3": 0.028196328826221646,
+   "n_est_splits": 200
+  }
+ }
+}

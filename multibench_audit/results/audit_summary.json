@@ -1,0 +1,52 @@
+{
+ "bar1": {
+  "met": 18,
+  "of": 22,
+  "pass_": true
+ },
+ "bar2": {
+  "met": 9,
+  "of": 22,
+  "pass_": false
+ },
+ "bar3": {
+  "cov_P2p": 0.8013523391812866,
+  "cov_P2m": 0.9072863482368659,
+  "n": [
+   21888,
+   20957
+  ],
+  "abs_relbias_pooled": 9.315430827382839,
+  "pass_": false
+ },
+ "falsifier": {
+  "oversized_mb_frac": 0.4090909090909091,
+  "min_cov": 0.8013523391812866,
+  "triggered": true
+ },
+ "checks": {
+  "i_noselection_tiid_size": 0.049,
+  "i_pass": true,
+  "ii_zero_plant_equals_N0": true,
+  "ii_n": 300
+ },
+ "ref_mb_N0_size": 0.046857142857142854,
+ "ref_pass": true,
+ "exploratory_spearman_mb_N0_size": {
+  "M": [
+   0.27054505456136335,
+   0.22331277800054117
+  ],
+  "records": [
+   0.29310376471683774,
+   0.18556043299588212
+  ],
+  "months_per_model": [
+   -0.18802936194240544,
+   0.4020487985281264
+  ]
+ },
+ "cl_unmeasured_series": 2,
+ "n_series": 22,
+ "unmeasured_mb": 0
+}

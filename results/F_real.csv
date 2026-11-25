@@ -1,0 +1,2 @@
+models,n_sota,quad_coef_per_yr2,hb_ci_lo,hb_ci_hi,hb_reject_5pct,hb_nvalid,iid_F_p,lin_slope_doublings_per_yr,lin_doubling_days,hb_ci_all_models_lo,hb_ci_all_models_hi,hb_reject_all_models,runs_sha256,runtime_s
+33,17,0.1143228222644657,-0.04375407801578384,0.24441462594279362,False,400,0.0009439465328139784,1.8158731296732025,201.14290697485734,-0.017017114864975653,0.26354061336016205,False,f489d11728909937dad99ba1ed2d7c40efe12a766891e67dbc7c2486a3311236,8.69162917137146

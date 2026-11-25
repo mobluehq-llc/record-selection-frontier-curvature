@@ -1,0 +1,37 @@
+cell A_null_exp n = 3000
+
+mb_all: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-0.961 -0.033  0.949]
+  null raw rejection: upward (z>1) 1.93%  downward (z<-1) 2.13%   | adjusted equal-tail cutoffs [-0.961,0.949]
+  A_logi_dec: raw up 0.0% down 66.4% | adjusted equal-tail up 0.0% down 68.8% two 68.8%
+  A_logi_mid: raw up 0.9% down 0.0% | adjusted equal-tail up 1.1% down 0.2% two 1.2%
+  A_sup_rr2: raw up 15.8% down 0.0% | adjusted equal-tail up 18.4% down 0.1% two 18.5%
+
+mb_sota: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-0.643  0.165  1.124]
+  null raw rejection: upward (z>1) 5.10%  downward (z<-1) 0.07%   | adjusted equal-tail cutoffs [-0.643,1.124]
+  A_logi_dec: raw up 0.0% down 4.8% | adjusted equal-tail up 0.0% down 26.3% two 26.3%
+  A_logi_mid: raw up 7.1% down 0.0% | adjusted equal-tail up 5.0% down 0.4% two 5.4%
+  A_sup_rr2: raw up 19.2% down 0.0% | adjusted equal-tail up 12.7% down 0.2% two 12.9%
+
+hb_all: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-1.494  0.002  1.741]
+  null raw rejection: upward (z>1) 13.07%  downward (z<-1) 9.80%   | adjusted equal-tail cutoffs [-1.494,1.741]
+  A_logi_dec: raw up 0.0% down 97.5% | adjusted equal-tail up 0.0% down 90.0% two 90.0%
+  A_logi_mid: raw up 61.9% down 0.2% | adjusted equal-tail up 35.0% down 0.0% two 35.0%
+  A_sup_rr2: raw up 55.2% down 0.3% | adjusted equal-tail up 25.1% down 0.1% two 25.2%
+
+hb_sota: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-0.902  0.695  2.301]
+  null raw rejection: upward (z>1) 36.50%  downward (z<-1) 1.17%   | adjusted equal-tail cutoffs [-0.902,2.301]
+  A_logi_dec: raw up 3.1% down 18.2% | adjusted equal-tail up 0.1% down 22.8% two 22.8%
+  A_logi_mid: raw up 90.2% down 0.0% | adjusted equal-tail up 48.2% down 0.8% two 49.0%
+  A_sup_rr2: raw up 69.8% down 0.0% | adjusted equal-tail up 17.0% down 0.8% two 17.8%
+
+xb_all: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-0.861 -0.082  0.828]
+  null raw rejection: upward (z>1) 0.70%  downward (z<-1) 0.73%   | adjusted equal-tail cutoffs [-0.861,0.828]
+  A_logi_dec: raw up 0.0% down 59.8% | adjusted equal-tail up 0.0% down 70.1% two 70.1%
+  A_logi_mid: raw up 0.8% down 0.0% | adjusted equal-tail up 1.1% down 1.2% two 2.3%
+  A_sup_rr2: raw up 7.2% down 0.0% | adjusted equal-tail up 15.7% down 0.3% two 16.0%
+
+xb_sota: raw rule == |z|>1 on all null replicates: True; null z quantiles 2.5/50/97.5 = [-0.617  0.093  0.963]
+  null raw rejection: upward (z>1) 1.73%  downward (z<-1) 0.00%   | adjusted equal-tail cutoffs [-0.617,0.963]
+  A_logi_dec: raw up 0.0% down 1.0% | adjusted equal-tail up 0.0% down 19.2% two 19.2%
+  A_logi_mid: raw up 2.9% down 0.0% | adjusted equal-tail up 3.2% down 1.8% two 5.0%
+  A_sup_rr2: raw up 8.7% down 0.0% | adjusted equal-tail up 10.7% down 0.8% two 11.4%

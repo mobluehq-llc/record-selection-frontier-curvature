@@ -1,0 +1,12 @@
+{
+ "real_Z": 25290811.635108303,
+ "real_reject_exp_for_logistic": false,
+ "null_n": 1000,
+ "null_rej": 6,
+ "null_size": 0.006,
+ "null_cp": [
+  0.0022049824851513764,
+  0.013013423270974496
+ ],
+ "null_Z_median": 18531496.527355812
+}

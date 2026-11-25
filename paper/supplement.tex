@@ -1,0 +1,392 @@
+\documentclass[aps,pre,twocolumn,superscriptaddress,nofootinbib,9pt]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{url}\usepackage{xurl}
+\usepackage{float}
+
+\input{numbers.tex}
+\newcommand{\rr}{rr}
+\newcommand{\rreq}{rr_{\rm eq}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\makeatletter\renewcommand\p@subsection{\thesection.}\makeatother
+
+
+
+\renewcommand{\dbltopfraction}{0.92}\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.5}\renewcommand{\textfraction}{0.08}\renewcommand{\floatpagefraction}{0.7}\renewcommand{\dblfloatpagefraction}{0.7}
+\begin{document}
+
+\title{Supplemental Material for ``Record selection can mimic or mask acceleration in AI benchmarks''}
+
+\author{Adam Faust}
+\affiliation{MOBLUEHQ, Inc., Long Grove, Illinois, USA}
+\date{25 November 2026}
+
+\maketitle\small
+
+Section and table numbers with the prefix S refer to this supplement; those without it refer to the main text. The evidence labels are those of the main text. This supplement holds what is needed to verify the claims; the dated plans and amendments, the errata log, the exploratory design grid and the raw power tables are in the archive.
+
+\section{Pre-registration: what was fixed and what had been seen}\label{sup:prereg}
+\paragraph*{First plan (before any run).} METR time-horizon 1.0 run file pinned by checksum; 1000 null data sets; the OLS $F$ test on the quadratic term of the record-only fit and a three-level hierarchical bootstrap (400 draws) at a nominal 5\%; bars as in Table~\ref{tab:ledger}; one real-data run of the bootstrap. Bar 2 failed, and the planned claim that the hierarchical bootstrap restores nominal size was dropped.
+
+\paragraph*{Design Amendment 2 (all-model tests).} OLS $t$; HC3 $t$ against $t(M-3)$; null-restricted wild bootstrap (Rademacher weights, 499 draws, HC3 $t$ as statistic); residual permutation (999 draws); model-level and parametric bootstraps with signed $p$-values; the ladder of null cells; the size band $[3.5,6.5]\%$; per-tail size-adjusted power with cut-offs from an independent calibration cell, validated on separate null draws. Written after an exploratory grid of nine procedures had been seen. \aTwoReps\ replicates, every cell complete (pre-registration commit \preregATwo).
+
+\paragraph*{Design Amendment 3 (corrections and diagnostics).} Eleven procedures chosen from \triN\ brainstormed stubs, all read and classified by hand (\triA\ testable in the existing simulator). The cells reuse the Amendment 2 data sets, regenerated from the same seeds. \emph{Disclosed look:} while debugging, 150 replicates of the validation null cell were run through the new code and their null rejection rates and mean curvatures were seen; no method was dropped or changed, and those replicates are part of the full cell. \aThreeReps\ replicates in \aThreeCells\ cells (commit \preregAThree).
+
+\paragraph*{Real-data amendment.} Committed (\preregReal) before any of its statistics was computed on real data; the only earlier run of the pipeline was a smoke test on one synthetic data set. It states what had already been looked at (the first plan's one-shot result and the later release), pins data and code by checksum, and fixes the family of six, the seeds, the bootstrap sizes and the reading rules. The runner refuses to overwrite its output and ran once.
+
+\paragraph*{Amendments CF1, CL1, CS1.} CF1: the formula, tolerance, eight schedules, seeds and bar were committed before the formula was evaluated, but the simulated means for three schedules (real, even, reflected) were already known, so we call it a pre-specified check with partly known targets, not a confirmatory bar. CL1: the assignment of models to developers, the statistic, the procedures, one sensitivity sample and the bar were committed before any clustered statistic was computed. CS1: the cells, replicates, band, bar and reading rule were committed before any size was computed.
+
+\paragraph*{Checks after outside review (exploratory).} Three plans, each committed before its run: changed dates and data for the early models, same-day ties, developer leverage and the audit under planted trends (Secs.~\ref{sup:real} and \ref{sup:audit}); the hinge comparison, with truths, selection rules, positive controls and a 90\% validity bar; and the split-task replication, with its splits, controls, intervals and reading rule (Sec.~\ref{sup:real}). The quadratic positive control of the hinge study missed its bar, so its identifiability rule is not read as a verdict.
+
+\paragraph*{Multi-benchmark audit.} Committed before any of this project's statistics was computed on the Epoch AI files (a sibling study had looked at record counts per series); code, series list and instrument checks were frozen by checksum before launch. \emph{Deviation:} the run used a different machine, four workers in place of six, and a different Python version from the plan, with the same frozen code and seeds. \emph{Not run:} the registered audit's sensitivity to the saturation rule (a later exploratory one, for the one-sided $F$ test only, is in Table~\ref{tab:satcut}). \emph{One-sided re-score:} the registered bars are two-sided. After an outside review, an amendment written before any one-sided statistic was computed fixed the one-sided definitions (the $F$ test rejects if the fitted record curvature is positive and half its $p$-value is below 0.05; the bootstrap rejects if the 5th percentile of the resampled curvatures is above zero). The bootstrap was re-run with the frozen code and seeds, and all 46{,}000 re-run intervals equalled the stored ones. The amendment's prediction that the METR reference would be oversized one-sided was wrong (\mbRefOne\%). The one-sided counts are descriptive and replace no bar.
+
+\begin{table*}[tb]
+\caption{Pre-registration status. CONF.: confirmatory, fixed before any run that bears on it (five bars; three failed). PRE-SPEC.: a pre-specified check whose formula, tolerance and bar were fixed before it was evaluated but whose targets were partly known (SM Sec.~\ref{sup:prereg}); it is not counted among the confirmatory bars. PRE-REG.: fixed in a later amendment (pre-registered exploratory). Only the two ``real data'' rows use the observed METR series; the audit rows use real scores with permuted dates.}
+\label{tab:ledger}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{p{0.15\textwidth}p{0.07\textwidth}p{0.36\textwidth}p{0.32\textwidth}}
+Test & Label & Criterion & Outcome \\
+\hline
+Plan, bar 1 & CONF. & OLS $F$ test on records: size above 10\%, CP lower limit above 7\% & met: \origIid\% (\origIidK/\origIidN) \\
+Plan, bar 2 & CONF. & hierarchical bootstrap on records: size within $[3,7]\%$ & \textbf{failed}: \origHb\% (\origHbK/\origHbN) \\
+Amendment CF1 & PRE-SPEC. & closed form for the record-only curvature within tolerance in at least 7 of \cfN\ schedules, right sign in all & \textbf{failed}: \cfPass\ of \cfN\ within tolerance, sign right in \cfSign \\
+Audit, bar 1 & CONF. & $F$ test on records oversized two-sided in at least half of the series & met: \mbBarOne\ of \mbN\ among valid fits (\mbIidTwoOverAtt\ if undefined fits count as non-rejections) \\
+Audit, bar 2 & CONF. & model-level bootstrap on records: size consistent with $[3,7]\%$ in at least 80\% of the series & \textbf{failed}: \mbBarTwo\ of \mbN; oversized in \mbOver\ (\mbOverPct\%), which triggers the registered falsifier (25\%) \\
+Audit, bar 3 & CONF. & the same bootstrap: pooled coverage of a planted curvature at least 0.90 for both signs, pooled relative bias below 0.25 & \textbf{failed}: coverage \mbCovPlus\ and \mbCovMinus; relative bias \mbRelBias \\
+Real data, rule & PRE-REG. & HC3 $p_{\rm up}<0.05$, audit $p_{\rm up}<0.05$ and Holm-adjusted HC3 $p_{\rm up}<0.10$ over six tests & met ($\hcPup$, $\realAuditPup$, $\holmHc$); fragile \\
+Real data, CL1 & PRE-REG. & clustered by developer: CR2 and wild cluster bootstrap $p_{\rm up}$ both below 0.05 & \textbf{not met}: \clP\ and \clWebb \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\paragraph*{Not run or not analysed.} HAC standard errors; a censoring-aware task-level model; a batch that varies the number of models; the pairing of Amendment 2 and 3 replicates, and with it the error rates of the joint reading rule; the power of the clustered tests.
+
+\section{Simulator validation}\label{sup:sim}
+Table~\ref{tab:simval} compares five summary statistics of the real data with their distribution over \simValN\ simulated null data sets generated with seeds not used in calibration. The calibrated parameters are a model-level offset SD of \sigmaM, a task-jitter SD of \sigmaJ\ with family share \phiFam, and a null rate of \rateNull\ doublings per year. Agreement on five summaries is a weak check: it does not show that the simulator reproduces dependence among models from the same developer, changes in noise over the window, or the process by which models come to be evaluated.
+
+\begin{table}[H]
+\caption{Simulator validation. ``Share below'': fraction of simulated data sets whose statistic is below the real value.}
+\label{tab:simval}
+\begin{ruledtabular}
+\begin{tabular}{p{0.30\columnwidth}cccc}
+Statistic & real & \shortstack{sim.\\median} & \shortstack{sim.\\5--95\%} & \shortstack{share\\below} \\
+\hline
+\input{table_simval.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{Size, ladder and exaggeration: full tables}\label{sup:tables}
+\begin{table*}[tb]
+\caption{Pre-registered exploratory. Rejection rates (\%) under an exactly exponential trend at a nominal 5\%, by null family: R, real design (40{,}000 replicates; CP 95\% interval shown for the upward rate); E, even dates; K2, low ceiling; N50, model-level noise halved; MF1, model-by-family interaction (20{,}000 each). ``up'': upward 5\%; ``two'': two-sided 5\%. Unmarked: within the band $[3.5,6.5]\%$; $\dagger$ inconclusive; $\ddagger$ outside. ``All five'': both rules within the band in every family (counts and all families: Table~\ref{tab:sizefull}).}
+\label{tab:size}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccc}
+Procedure & R, up & R, two & E, up & K2, up & N50, up & MF1, up & size-valid & all five \\
+\hline
+\input{table_size.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[tb]
+\caption{Pre-registered exploratory. Size-adjusted power (\%) for acceleration at the real design (Amendments 3 and 2). Adjusted entries of OLS and permutation, and of HC3 and wild, coincide: one statistic, one calibrated cut-off. Last column: raw power at $\rr=2$, nominal cut-off.}
+\label{tab:power}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+ & \multicolumn{5}{c}{size-adjusted, $\rr=$} & raw \\
+Procedure & 1.25 & 1.5 & 2 & 3 & 4 & $\rr=2$ \\
+\hline
+\input{table_power.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\emph{Six further procedures} (Amendment 3), tested alongside those of main-text Sec.~II: \emph{naive weighting} weights each record by the inverse of its plug-in probability of being a record (clipped below at 0.05), a negative control that cannot correct selection on the outcome; the \emph{mirror envelope} averages the curvature of the forward upper records with that of the backward lower records (models strictly below every later model), so that the first-order bias cancels under date symmetry; the \emph{record-truncated likelihood} is the likelihood-ratio test for the quadratic term using only the records, each density truncated to exceed the previous record, and is tested by the signed square root of $2\Delta\log L$ (sign of the fitted curvature) referred to a standard normal distribution, as is the censored likelihood of the main text; the \emph{record-gap trend} is the mean gap between successive record heights in the later half of the records minus that in the earlier half; the \emph{record-minus-all contrast} is the record-only curvature minus the all-model curvature; the \emph{threshold perturbation} is the curvature over records that beat their predecessor by at least half a residual SD minus that over all records. All but the two likelihood tests are referred to the parametric-bootstrap null.
+
+Table~\ref{tab:size} (the five-family summary) and Table~\ref{tab:power} (size-adjusted power) hold the procedures not shown in main-text Table~I. Table~\ref{tab:sizefull} (left) is the complete size table behind them; its verdicts use pointwise intervals, so one that sits near a boundary (the random audit at the real design, \sizeAuditUp\% upward with CP \sizeAuditUpLo--\sizeAuditUpHi\%) should not be read as settled. The same table (right) gives the seven tests of Amendment 2 in all nine null families. At the real design the mean all-model curvature is \aTwoRAll\ (SE \aTwoRAllSe), small but more than two standard errors from zero; a bias of fixed size weighs more as the model-level noise is reduced, which is one candidate explanation, not tested, for the oversizing in N50 and N25. We have no explanation for the oversizing with evenly spaced dates. The 95\% intervals of the size-adjusted power come from a double bootstrap (400 draws) that resamples both the independent calibration null cell, which sets the cut-off, and the alternative replicates, so they carry the uncertainty of the cut-off as well as the Monte Carlo error of the alternative; they are therefore wider than the binomial interval of the 10{,}000 replicates alone (HC3 at $\rr=2$: 34.0\%, 32.8 to 35.1\%). The 34.0\% is the best among the all-model tests whose nominal size held at the reference design; the classical OLS $t$ test, oversized at its nominal cut-off, reaches 40.2\% only after the cut-off is calibrated in the simulator, which cannot be done for real data. The calibrated cut-offs behind the size-adjusted power achieved \aTwoValOls\% (OLS) and \aTwoValHc\% (HC3) on the independent validation null.
+
+Table~\ref{tab:bias} gives the mean curvature of each estimator under the exponential null, quoted in main-text Sec.~III.A. Table~\ref{tab:ladder} gives the ladder. The first rung at which the mean all-model curvature is more than two standard errors from zero, the registered question, is rung 1 (\ladOneAll, SE \ladOneSe). The record-only curvature is biased upward at every rung, including rung 0, where the only ingredients are the real dates and selection.
+
+Table~\ref{tab:typem} (exploratory, not pre-registered; stored replicates of Amendment 3, 10{,}000 data sets per alternative) divides the mean curvature estimate among upward rejections at the nominal 5\% by the true curvature. Under the exponential null the audit's rejections have a mean all-model curvature of \typeMAllGivenNull. The factors condition on the audit gate alone; the factor for the joint rule has not been computed.
+
+\begin{table}[H]
+\caption{Pre-registered exploratory. Mean curvature under the exponential null in the reference simulation (validation null cell of Amendment 3; SE over replicates), and the equivalent ratio $\rreq$. ``In range'': $|\rreq-1|\le0.10$, fixed in advance.}
+\label{tab:bias}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Estimator & mean $\beta_2$ & SE & $\rreq$ & in range \\
+\hline
+\input{table_bias.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[H]
+\caption{EXPLORATORY. Mean estimate among upward rejections at the nominal 5\%, divided by the true curvature $\beta_2$, real design. ``All-model'': the all-model curvature in the data sets in which the audit test rejects.}
+\label{tab:typem}
+\begin{ruledtabular}
+\begin{tabular}{lccccc}
+Alternative & true $\beta_2$ & \shortstack{audit,\\own} & \shortstack{audit gate,\\all-model} & \shortstack{inverse-\\Mills} & \shortstack{record-\\only} \\
+\hline
+\input{table_typem.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table*}[t]
+\caption{PRE-REGISTERED EXPLORATORY (Design Amendment 2). The ladder of null cells at the real dates, 20{,}000 replicates per rung; each rung adds one feature to the one above. Mean curvature of the all-model and of the record-only fit (doublings per year$^2$), the ratio $\rreq$ equivalent to the latter, and upward rejection rates (\%) at a nominal 5\%. Unmarked: within the band; $\dagger$ inconclusive; $\ddagger$ outside.}
+\label{tab:ladder}
+\begin{ruledtabular}
+\begin{tabular}{lccccccc}
+Rung & \shortstack{all-model\\mean $\beta_2$} & SE & \shortstack{record-only\\mean $\beta_2$} & \shortstack{record-only\\$\rreq$} & \shortstack{OLS $t$,\\up} & \shortstack{HC3 $t$,\\up} & \shortstack{model bootstrap\\on records, up} \\
+\hline
+\input{table_ladder.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[tb]
+\caption{PRE-REGISTERED EXPLORATORY. Full size tables: rejection rates (\%, one decimal; CP 95\% interval for the upward rate; the other intervals are in the archive) under the exponential null at a nominal 5\%, by null family; verdicts are computed from the unrounded values: OK, interval inside $[3.5,6.5]\%$; OUT, wholly outside; inc., inconclusive; given as upward/two-sided. Left: Design Amendment 3 (R real design, 40{,}000 replicates; E even dates; K2 low ceiling; N50 model noise halved; MF1 model-by-family interaction; 20{,}000 each; valid fits 19{,}997 to 20{,}000 per cell, R 39{,}998 to 40{,}000). Right: Design Amendment 2 (R real design, 40{,}000; E; K0, K2, K4 suite ceiling progressively lower; N50, N25 model noise halved, quartered; MF1, MF2; 20{,}000 each).}
+\label{tab:sizefull}\label{tab:atwofull}
+\tiny\renewcommand{\arraystretch}{0.9}\setlength{\tabcolsep}{1.2pt}
+\begin{minipage}[t]{0.49\textwidth}
+\begin{tabular}{llcccc}
+\hline\hline
+Procedure & fam. & upward & two-sided & downward & verdicts \\
+\hline
+\input{table_sizefull.tex}
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\begin{tabular}{llcccc}
+\hline\hline
+Test & fam. & upward & two-sided & downward & verdicts \\
+\hline
+\input{table_a2sizefull.tex}
+\end{tabular}
+\end{minipage}
+\end{table*}
+
+\section{Real-data analysis: details}\label{sup:real}
+\paragraph*{Reading rule and the six statistics.} Six statistics were named in advance, with Holm's adjustment across their upward $p$-values (Table~\ref{tab:real}). The rule permits the words ``evidence of acceleration'' only if the all-model HC3 test and the random-audit test both give $p_{\rm up}<0.05$ and the Holm-adjusted HC3 $p_{\rm up}$ is below 0.10. It was met (main text); the main text does not adopt the wording.
+
+\begin{table}[H]
+\caption{Pre-registered exploratory. The six pre-registered statistics on the real series (\nModels\ models, \nRecords\ records) and the record-only curvature for reference. $p_{\rm up}$: one-sided, for acceleration; Holm adjustment over the six. ``Null'': mean over \pbDraws\ parametric-bootstrap data sets with no acceleration. Curvatures in doublings per year$^2$; record timing in years.}
+\label{tab:real}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Statistic & obs. & null & $p_{\rm up}$ & Holm \\
+\hline
+All-model, HC3 $t$ & \betaAll & 0 & \hcPup & \holmHc \\
+Random audit & \realAuditBeta & \realAuditNull & \realAuditPup & \holmAudit \\
+Inverse-Mills & \realHeckBeta & \realHeckNull & \realHeckPup & \holmHeck \\
+Record timing & \realRrateObs & \realRrateNull & \realRratePup & \holmRrate \\
+Record$-$all contrast & \realContrBeta & \realContrNull & \realContrPup & \holmContr \\
+Threshold perturb. & \realThrBeta & \realThrNull & \realThrPup & \holmThr \\
+\hline
+Record-only (ref.) & \realSotaBeta & \realSotaNull & \realSotaPup & n/a \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Sample and all-model regression.} \nModels\ models released between 14 February 2019 and 24 November 2025 (\spanYears\ years), \nRecords\ records. Curvature \betaAll\ per year$^2$, HC3 standard error \hcSe, HC3 $t=\hcT$ on 30 degrees of freedom ($p_{\rm up}=\hcPup$); OLS $t=\olsT$ ($p_{\rm up}=\olsPup$); null-restricted wild bootstrap with 9999 draws, $p_{\rm up}=\wildPup$; residual permutation with 9999 draws, $p_{\rm up}=\permPup$. With the wild-bootstrap $p$ in place of the HC3 $p$ (computed after the fact) the Holm-adjusted value for the all-model test is \holmWild. A model-level bootstrap interval for the curvature (\mbDraws\ resamples; coverage not validated) is $[\mbAllLo,\mbAllHi]$.
+
+\paragraph*{Audit draws.} Over the 200 pre-registered audit draws the statistic has median \auditMed\ (interquartile range \auditQlo--\auditQhi); the registered draw, \realAuditBeta, lies \auditDrawAbove\ the upper quartile. Over \auditManyN\ further draws (exploratory, new seed) the median is \auditManyMed\ (interquartile range \auditManyQlo--\auditManyQhi; the registered draw exceeds \auditManyShare\% of them) and the mean is \auditManyMean, which equals the all-model curvature to within simulation error; this is not guaranteed, since weighted least squares inverts a random cross-product matrix, so inverse-probability weights do not make the coefficient exactly design-unbiased. We did not compute a $p$-value for the draw-averaged statistic: that would be a new, unregistered test on data already seen.
+
+\paragraph*{Sensitivity to early models (exploratory).} Table~\ref{tab:sens} refits the all-model quadratic with models left out, using the frozen regression code. None of these subsamples has a size verdict of its own, and choosing subsets after seeing the data is a forking path: the table is for judging fragility, not for a second test.
+
+\begin{table}[H]
+\caption{EXPLORATORY, not pre-registered. All-model curvature with early models left out. Wild: null-restricted wild bootstrap, 9999 draws.}
+\label{tab:sens}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Sample & models & $\beta_2$ & HC3 $p_{\rm up}$ & wild $p_{\rm up}$ \\
+\hline
+All (registered) & \nModels & \betaAll & \hcPup & \wildPup \\
+Without GPT-2 & 32 & \looBGptTwo & \looPGptTwo & \\
+Without GPT-3 & 32 & \looBGptThree & \looPGptThree & \\
+Without both & \dropFirstTwoN & \dropFirstTwoBeta & \dropFirstTwoP & \dropFirstTwoWild \\
+Released from 2023 & \dropPreTwentyThreeN & \dropPreTwentyThreeBeta & \dropPreTwentyThreeP & \dropPreTwentyThreeWild \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Proxy dates, imputed outcomes, ties and developer influence (exploratory; pre-registered in \texttt{redteam\_final/} before the runs).} METR gives davinci-002 the date of GPT-3 (28 May 2020) and gpt-3.5-turbo-instruct that of GPT-3.5 (15 March 2022), as its footnote to Sec.~3.2 states \cite{kwa2025}. OpenAI listed both models as replacements in a deprecation notice of 6 July 2023 and made davinci-002 available on 22 August 2023. For gpt-3.5-turbo-instruct, METR's own Table~E.3 of its frontier risk report lists 18 September 2023 \cite{metr2026risk} (checked 24 November 2026; a press report of 19 September 2023 describes its introduction \cite{decoder2023}, and some third-party listings give 28 September). The ``Sep 2023'' row uses 18 September for it and 22 August for davinci-002 (availability dates); the ``GPT-3.5 proxy dated 6 July 2023'' row, a sensitivity, keeps davinci-002 on 22 August 2023 and dates gpt-3.5-turbo-instruct to 6 July 2023, the deprecation-notice date. Table~\ref{tab:proxy} repeats the paired Gaussian experiment (the same noise draws in every row, \proxReps\ replicates) and the observed fit under each calendar. In the simulation the record-only curvature stays positive and $\rreq$ between \proxSimMin\ and \proxSimMax; the observed all-model result is what moves. GPT-2 has \impN\ imputed zero outcomes in the pinned file (\impHcast\ HCAST and \impRe\ RE-Bench rows, run identifiers \texttt{fake\_gpt2\_*}) and \impSwaa\ real SWAA runs; METR states that removing the zeros has a negligible effect on its results \cite{kwa2025}. All \nModels\ refitted horizons are in Table~\ref{tab:horizons}. Dropping them moves GPT-2's $\log_2$ horizon from $\impHWith$ to $\impHWithout$, leaves every other horizon unchanged, and gives the last row of Table~\ref{tab:proxy}. \emph{Ties and the two record rules.} Three pairs of models share a release date. The \emph{sequential rule}, used by every registered simulation and test (the headline $\rreq=\biasRrSota$ of main-text Sec.~III.A, Fig.~1, Table~\ref{tab:real}), sorts by date and then name and counts strict improvements, which is not order-invariant: the observed series has \tieNameN\ records in that order and \tieRevN\ with names reversed within dates (o4-mini then precedes o3; of 100 random within-day orders \tieRandEighteen\ give 18 records and \tieRandSeventeen\ give 17). The \emph{group rule}, frozen for later sensitivity runs only, is one record per date, the day's maximum if it beats all earlier days; it gives \tieGroupN\ records on the observed series, and in the simulation the mean record curvature is \tieSimName\ (name order), \tieSimRev\ (reversed) and \tieSimGroup\ (group rule), that is $\rreq$ of 1.66 and 1.67 at the reference rate and span; the conversion of curvature to $\rreq$ does not depend on the record rule. \emph{Developers.} Table~\ref{tab:loo} gives leave-one-developer-out fits and each developer's share of the partial leverage of the squared-date regressor (GPT-2 alone: \levGptTwo\%). Only removing OpenAI changes the HC3 verdict (removing Anthropic leaves $p_{\rm up}=\looAnthP$).
+
+\begin{table}[H]
+\caption{Observed series under changed dates (exploratory). Simulated record-only curvature and $\rreq$ (paired Gaussian experiment), then the observed all-model curvature, its HC3 one-sided $p$ and the record-only $\rreq$.}
+\label{tab:proxy}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{p{0.33\columnwidth}ccccc}
+Calendar or data & sim $\beta_2$ & sim $\rreq$ & $\hat\beta_2$ & $p_{\rm up}$ & rec. $\rreq$ \\
+\hline
+\input{table_proxy.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Leave-one-developer-out fits (exploratory): models removed, all-model curvature, HC3 $p_{\rm up}$, record-only curvature, and the developer's share of partial leverage.}
+\label{tab:loo}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lccccc}
+Developer left out & removed & $\hat\beta_2$ & $p_{\rm up}$ & record $\hat\beta_2$ & leverage \\
+\hline
+\input{table_loo.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Hinge against quadratic (exploratory).} Three models for $y$ on date: a line (L), the quadratic (Q), and a hinge (H) with a jump in level and a change of slope at the release of o1-preview (September 2024; \hgPost\ of the \nModels\ models fall at or after it). On the real series the hinge has a level jump of \hgD\ (developer-clustered wild bootstrap, two-sided $p=\hgDp$) and a slope change of \hgG\ doublings per year ($p=\hgGp$; jointly \hgJointP). AICc (as computed, with $k$ the number of regression coefficients: 3 for the quadratic, 4 for the hinge, residual variance not counted, Gaussian small-sample correction) prefers the hinge by \hgAiccDiff; counting the residual variance as a parameter ($k+1$) reverses this to \hgAiccDiffV\ in favour of the quadratic, so the comparison is a near tie under either convention (the simulated selection rates of Table~\ref{tab:hinge} use the first convention and were not re-run). BIC the quadratic by \hgBicDiff, and leave-one-month-out cross-validation the hinge (mean squared error \hgCvH\ against \hgCvQ). With both sets of terms the curvature is \hgCQH\ ($p=\hgCQHp$) and the hinge terms have joint $p=\hgJointGivenC$: the two share the same variance. Table~\ref{tab:hinge} gives the model chosen by AICc in \hgR\ data sets simulated from each fitted model at the real dates with independent normal noise, and from two positive controls. The control with the slope quadrupled at the break passed its 90\% bar; the quadratic control with $\rr=4$ did not, so no identifiability verdict is given. Not run: the record-only series, other break dates, the fits without OpenAI or the proxy models.
+
+\begin{table}[H]
+\caption{Exploratory. Model selected by AICc (\% of \hgR\ simulated data sets at the real dates), by the model that generated the data.}
+\label{tab:hinge}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Truth & line & quadratic & hinge \\
+\hline
+\input{table_hinge.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Split-task replication (exploratory).} The strongest evidence that the selection is not mainly on run-to-run luck is not the point estimate of $D_1$, whose interval is wide, but that the residuals of the half-task horizons about each half's trend correlate at \stR\ across disjoint task halves, and that binomial run noise by itself induces a bias of only \stCone. Data: METR's version 1.1 runs, \stModels\ dated models from three developers, 228 tasks in 79 families; curvature in doublings per year$^2$. Families were ordered by difficulty, paired, and one of each pair sent to each half by a seeded coin, \stSplits\ times; horizons were refitted on each half, and every model gave a valid fit on every half. Records are selected on one half. $D_1$ is their curvature on that half minus the curvature of the same models on the other half; $D_2$ is the curvature of those models on the other half minus that of all models there. Mean $D_1=\,$\stDone, 95\% interval \stDoneLo\ to \stDoneHi\ by a bootstrap over families. Mean $D_2=\,$\stDtwo\ (\stDtwoLo\ to \stDtwoHi). Controls, with a true curvature of zero: without noise $D_1$ is exactly zero; with binomial run noise it is \stCone\ (SE \stConeSe); with a shock shared across models it is zero within two standard errors. The registered reading rule calls a hypothesis supported only if both intervals lie above zero; neither $D_1>0$ nor $D_2>0$ is supported. The interval for $D_1$ (\stDoneLo\ to \stDoneHi) is wide enough to contain the whole simulated selection bias, so ``no shrinkage detected'' is not evidence of none. 
+
+\paragraph*{Developer-clustered tests (CL1).} Clusters, fixed before the computation from the public release list: OpenAI \clMax, Anthropic \clSecond, DeepSeek 4, Alibaba 2, Google 1, xAI 1, Moonshot 1. Full sample: CR2 $t=\clT$ on \clDf\ Satterthwaite degrees of freedom, one-sided $p=\clP$; wild cluster bootstrap with Webb weights (\clWebbB\ draws), \clWebb; Rademacher enumeration, \clRad. Without GPT-2 and GPT-3 (\dropFirstTwoN\ models): CR2 $t=\clTDrop$ on \clDfDrop\ degrees of freedom, $p=\clPDrop$; Webb \clWebbDrop; Rademacher \clRadDrop. Developer is the only grouping tried.
+
+\paragraph*{Size of the clustered tests (CS1).} Table~\ref{tab:cssize}: upward rejection rates under an exactly exponential trend with the real release dates and cluster sizes; \csReps\ replicates per cell, \csWebbB\ Webb draws per replicate. Four cells use the existing simulators, in which models are independent across developers; in two, the model-level offset is split into a part shared within a developer and an independent part, with within-developer correlation $\rho=0.3$ or $0.6$. No test met the bar (within the band in all six cells): CR2 was within the band in \csCrValid\ cell and conservative in \csCrCons; the Webb bootstrap was within the band in \csWebbValid, with an interval reaching below 3.5\% in the Gaussian cell (\csWebbGauss\%, CP \csWebbGaussLo--\csWebbGaussHi\%); the Rademacher enumeration in \csRadValid. The registered rule allows a $p$-value to be called calibrated only for a test that is size-valid in every cell, so strictly neither real-data value qualifies; reading the Webb value as approximately calibrated would go beyond that rule. Limits: size only; a developer effect that is a level shift without drift; CP half-widths of about 0.7 points.
+
+\begin{table}[H]
+\caption{Pre-registered exploratory (Amendment CS1), simulated data. Upward rejection rate (\%) at a nominal one-sided 5\% of the developer-clustered tests under an exactly exponential trend, with CP 95\% interval. Unmarked: inside $[3.5,6.5]\%$. $\dagger$ inconclusive. $\S$ conservative (interval wholly below 3.5\%).}
+\label{tab:cssize}
+\tiny\setlength{\tabcolsep}{1.5pt}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Null cell & CR2 & Webb & Rademacher \\
+\hline
+\input{table_cssize.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{A closed form for the schedule effect (CF1; pre-specified, partly known targets, bar failed)}\label{sup:cf}
+Models $i=1,\dots,n$ at dates $t_1\le\dots\le t_n$ have $y_i=rt_i+s z_i$ with independent standard normal $z_i$; model $i$ is a record if $y_i$ exceeds every earlier $y_j$. With $d_{ij}=r(t_i-t_j)/s$, the probability that model $i$ is a record and its expected error given that it is one are
+\begin{equation}
+\begin{split}
+p_i&=\int\phi(z)\prod_{j<i}\Phi(z+d_{ij})\,dz,\\
+m_i&=\frac{1}{p_i}\int z\,\phi(z)\prod_{j<i}\Phi(z+d_{ij})\,dz,
+\end{split}
+\end{equation}
+evaluated by the trapezoid rule on 8001 nodes over $[-10,10]$. The approximation to the mean record-only curvature is the coefficient of $(t-\bar t)^2$ in a weighted least-squares regression of $rt_i+s\,m_i$ on an intercept, $t_i-\bar t$, and $(t_i-\bar t)^2$, with weights $p_i$.
+
+The simulation (\cfReps\ data sets per schedule) has $n=\nModels$ and the span, rate and noise SD of the calibrated simulator, on eight schedules: the real dates; even spacing; the real dates reflected; four smooth schedules $t=\text{span}\times u^{g}$ with $u$ evenly spaced and $g=0.5,0.75$ (denser late) and $1.5,2$ (denser early); and three bursts of eleven models. A schedule passes if the formula is within 15\% of the simulated mean or within two Monte Carlo standard errors of it; the bar was at least seven passes and the right sign in all eight. Outcome (Table~\ref{tab:cf}): \cfPass\ passes, sign right in \cfSign. The expected number of records from the same integrals agrees with simulation to within \cfRecErr\% in every schedule, so the error is in the weighted-fit step; the formula overstates the negative curvature by \cfErrMin\% to \cfErrMax\% in the six schedules where the simulated bias is negative. We did not search the order-statistics literature for an exact result.
+
+\begin{table}[H]
+\caption{PRE-SPECIFIED (simulated data; Amendment CF1; targets partly known). Closed-form approximation and simulated mean of the record-only curvature (doublings per year$^2$) under independent Gaussian errors, by release schedule. ``Pass'': within the pre-set tolerance.}
+\label{tab:cf}
+\tiny\setlength{\tabcolsep}{1.5pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+Schedule & formula & sim. & SE & \shortstack{rel.\\error} & pass & sign \\
+\hline
+\input{table_cf.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{Multi-benchmark audit (confirmatory; bars 2 and 3 failed)}\label{sup:audit}
+\paragraph*{Data.} The benchmark files of Epoch AI \cite{epochdata}, retrieved on 23 November 2026 and pinned by checksum. A file is a series if, after rows without a date or a score are dropped, it has at least 30 distinct models, 8 records and 15 distinct release months; a series is truncated before the first record that reaches 90\% of the benchmark's ceiling. \mbN\ files qualified and \mbExcluded\ did not. All are scores between 0 and 1, analysed on the logit scale (clipped at 0.005 and 0.995), with \mbMmin--\mbMmax\ models and \mbRecMin--\mbRecMax\ records. One is the average score on the METR suite; without it the three bar counts below are \mbBarOneNoMetr, \mbBarTwoNoMetr\ and \mbOverNoMetr\ of \mbNNoMetr. The METR time horizon ($\log_2$ minutes) was run as a reference outside the bars.
+
+\paragraph*{Constructions and tests.} For each series, 1000 permutations of the release dates among the models. N0: the permuted series. With $u=(t-t_{\min})/\text{span}$ and $\text{SD}$ the standard deviation of the series' logit scores: P1 adds $0.5\,\text{SD}\,u$ to N0, a rise of half an SD across the span. P2$\pm$ adds $\pm0.5\,\text{SD}\,u^2$ to P1, a quadratic contribution of $\pm$ half an SD at the end of the span; the planted coefficient, $\pm0.5\,\text{SD}/\text{span}^2$, is the target for coverage. Tests (two-sided, nominal 5\%): the OLS $F$ test on the quadratic term over the record points; and the model-level bootstrap (400 resamples of models, record rule re-applied, reject if the 95\% percentile interval of the curvature excludes zero). A statistic counts as measured in a series if at least 500 of the 1000 replicates give a valid value.
+
+\paragraph*{Bars and outcome.} Bar 1: the $F$ test's N0 size above 10\% with CP lower limit above 7\% in at least half of the series; \emph{met}, \mbBarOne\ of \mbN. Bar 2: the bootstrap's size under N0 and P1 consistent with $[3,7]\%$ in at least 80\% of the series; \emph{failed}, \mbBarTwo\ of \mbN. Bar 3: pooled coverage at least 0.90 for both signs and pooled absolute relative bias below 0.25; \emph{failed}, coverage \mbCovPlus\ and \mbCovMinus, relative bias \mbRelBias. Falsifier: the bootstrap oversized in at least a quarter of the series, or pooled coverage below 0.85; \emph{triggered} on both counts (\mbOver\ of \mbN, \mbOverPct\%). Instrument checks, all passed: on a synthetic series with no selection the $F$ test rejected in \mbCheckIid\%; planting a zero trend reproduced N0 exactly; and the bootstrap's N0 size on the METR reference, \mbRefSize\%, was inside the pre-declared window of \baseMbSota\% $\pm$ 2 points from our simulator.
+
+\paragraph*{Per-series results.} Table~\ref{tab:mbaudit}. Table~\ref{tab:plant} gives, for each series, the mean fitted record curvature under the planted upward curvature behind the 20 of 22 of the abstract. The bootstrap's N0 size ranges from \mbMbMin\% to \mbMbMax\%; its power against the planted upward curvature is at most \mbPowPlusMax\% in any series. Its N0 size is only weakly related to the number of models or of records (Spearman $\rho=\mbRhoM$ and \mbRhoRec; exploratory). Table~\ref{tab:mbonesided} gives the one-sided re-score with the numbers of valid fits. Among valid fits (the rule of the main text), the $F$ test is oversized one-sided in \mbIidOneOver\ series and the bootstrap in \mbMbOneOver; the $F$ test is oversized two-sided in \mbBarOne\ series. With every undefined fit counted as no rejection (denominator 1000), the oversized counts are \mbIidTwoOverAtt\ (two-sided) and \mbIidOneOverAtt\ (one-sided) for the $F$ test and \mbMbTwoOverAtt\ and \mbMbOneOverAtt\ for the bootstrap. On the METR reference the $F$ test's one-sided rate is \mbRefIidOne\% (\mbRefIidN\ valid fits). The reference figures are for a no-trend null on the 45 models of METR version 1.1, not the simulator's 33-model version 1.0 design under steady growth.
+
+\paragraph*{One-sided $F$ test under a planted linear trend; ceiling cut-off (exploratory; pre-registered before the run).} Table~\ref{tab:satcut} scores the upward one-sided $F$ test (coefficient above zero and $p<0.10$) on the 22 series for N0, P1 (the registered half-standard-deviation linear trend) and PF (each series' own fitted positive slope, planted), with the saturation cut-off at 80\%, 90\% (as registered; reproduces the stored fits), 95\% of the ceiling and with none. Cells give the numbers of series oversized/within/undersized/intermediate/not measured by the audit's own rule (Table caption) and the median upward rate (\%). Planting a trend does not remove the oversizing: \satOverMin\ to \satOverMax\ of 22 series are oversized upward in every cell, and the METR v1.1 reference rate is \mbRefIidOne\% under N0, \satRefP\% under P1 and \satRefPF\% under PF.
+\begin{table}[H]
+\caption{Upward one-sided $F$ test on records by construction and ceiling cut-off. Per construction, counts of the 22 series as oversized/within/undersized/intermediate/not measured (sum 22; 21 for PF at .80, one series having no positive slope), then the median upward rate (\%). Oversized: rate above 10\% with CP lower limit above 7\%; within: CP interval meets $[3,7]\%$; undersized: CP upper limit below 3\%; intermediate: none of these; not measured: fewer than 500 valid fits. At the registered 90\% cut-off under N0 the 22 are 3 oversized, 11 within, 8 undersized.}
+\label{tab:satcut}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+cut-off & \multicolumn{2}{c}{N0} & \multicolumn{2}{c}{P1} & \multicolumn{2}{c}{PF} \\
+\hline
+\input{table_satcut.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Limits.} The null is a series without trend, obtained by permutation; release dates are the only covariate; one transform and one record rule were used, and one saturation rule except in Table~\ref{tab:satcut}.
+
+\begin{table*}[tbp]
+\squeezetable\tiny\renewcommand{\arraystretch}{0.80}
+\caption{CONFIRMATORY (multi-benchmark audit). Per-series rejection rates (\%, two-sided, nominal 5\%) with CP 95\% intervals over the valid fits among 1000 date permutations. $M$: models; rec.: records. N0: permuted dates; P1: planted linear trend. ``Power, P2$+$'': rejection in the planted direction under planted upward curvature. Coverage: share (\%) of replicates in which the bootstrap 95\% interval contains the planted coefficient. $\ddagger$: the bootstrap is oversized (above 10\% with CP lower limit above 7\%, under N0 or P1). Last row: reference series, outside the bars.}
+\label{tab:mbaudit}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccc}
+ & & & $F$ test & \multicolumn{5}{c}{model-level bootstrap on records} \\
+Series & $M$ & rec. & N0 & N0 & P1 & power, P2$+$ & cov., P2$+$ & cov., P2$-$ \\
+\hline
+\input{table_mbaudit.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[tbp]
+\squeezetable\tiny\renewcommand{\arraystretch}{0.80}
+\caption{DESCRIPTIVE (one-sided re-score of the audit). Permutation null N0, nominal 5\%. For the $F$ test, ``one-sided'' rejects only when $\hat\beta_2>0$ and the two-sided $p<0.10$; for the model-level bootstrap it rejects only when the 5th percentile of the resampled curvatures is above zero; either can exceed the two-sided rate. ``Valid'': permutations of 1000 in which the fit was defined. ``One-sided'': upward rejection rate (\%) among valid fits, with CP 95\% interval. ``Two-sided'': the registered rate among valid fits. ``Of 1000'': rates of the $F$ test with undefined fits counted as non-rejections. Last row: reference series, outside the counts.}
+\label{tab:mbonesided}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccc}
+ & \multicolumn{5}{c}{$F$ test on records} & \multicolumn{3}{c}{model-level bootstrap on records} \\
+Series & valid & one-sided & two-sided & \shortstack{two-sided,\\of 1000} & \shortstack{one-sided,\\of 1000} & valid & one-sided & two-sided \\
+\hline
+\input{table_mbonesided.tex}
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\section{Reproducibility and provenance of numbers}\label{sup:repro}
+\paragraph*{Fit and simulator equations.} For model $m$ and task $k$ let $N_{mk}$ be the number of runs, $S_{mk}$ the number of successes, $x_k$ the $\log_2$ of the human time in minutes and $w_k$ METR's inverse-square-root task weight (\texttt{invsqrt\_task\_weight}), rescaled within each model so that $\sum_k \tilde w_k N_{mk}=\sum_k N_{mk}$. The horizon fit minimises over $(a,b)$ the weighted negative log-likelihood $\sum_k \tilde w_k\,[\,N_{mk}\log(1+e^{z_k})-S_{mk}z_k\,]+\tfrac{\lambda}{2}b^2$ with $z_k=a+bx_k$, $\lambda=0.01$ and only the slope penalised; the horizon is $y_m=-a/b$ ($\log_2$ minutes), with $b$ bounded in $[-5,-10^{-3}]$ and $a$ in $[-60,60]$. In the simulator, $S_{mk}\sim\mathrm{Binomial}(N_{mk},p_{mk})$ with $p_{mk}=\sigma\big(\beta_m\,[\,x_k+j_k-L_m\,]\big)$, where $\sigma$ is the logistic function, $\beta_m$ is model $m$'s fitted slope on the real data, $L_m=a_0+\rho\,(t_m-t_{\min})+\varepsilon_m$ (where $a_0={}$\simAZero\ $\log_2$ minutes is the calibrated intercept, the horizon at the first release date) with $\varepsilon_m\sim N(0,\sigma_m^2)$ under the exponential null (the quadratic alternative replaces the line by the quadratic curve, indexed by $\rr$, with the same mean rate), and the task jitter is $j_k=\sigma_j\big(\sqrt{\phi}\,F_{f(k)}+\sqrt{1-\phi}\,g_k\big)$ with independent standard normal family effects $F_f$ and task effects $g_k$. The calibrated values are $\sigma_m=\sigmaM$, $\sigma_j=\sigmaJ$, $\phi=\phiFam$ and $\rho=\rateNull$ doublings per year. The data sets keep the real $N_{mk}$ and $w_k$.
+
+\paragraph*{Pins and seeds.} METR time-horizon 1.0 run file, SHA-256 beginning \runsSha; the release dates file, the later release, and the frozen simulator and test modules are pinned likewise (\texttt{real\_data/PINS.txt} and each run manifest). Real-data run: NumPy \numpyV, SciPy \scipyV. Seeds: simulated data of Amendments 2 and 3, \texttt{SeedSequence([79, cell, rep])}; test randomness of Amendment 3, \texttt{[83, cell, rep]}; real-data run, \texttt{[9100, k]}; schedule illustration \texttt{[4713, k]} and its paired redraw for Fig.~1 \texttt{[4715, 1]}; closed-form test \texttt{[4714, k]}; wild cluster bootstrap \texttt{[9200, k]}; cluster size study \texttt{[5301, cell, rep]}; audit \texttt{[44, series, rep]}; sensitivity refits and further audit draws \texttt{[9101, \ldots]}.
+
+\paragraph*{Numbers.} No result number in the main text or in this supplement is typed by hand. The script \texttt{paper/make\_numbers.py} reads the committed result files and writes the macros and table bodies, and \texttt{paper/numbers\_manifest.txt} lists the source file and key of each macro; a missing key or table row stops the build. The build also asserts the statements the text makes about the results (which families are inside the size band, that no clustered $p$-value is below 0.05, the pass and sign counts of the closed form, the verdict counts of the cluster size study, and the audit's bar counts, one-sided counts and valid-fit denominators recomputed from the stored per-series counts). \texttt{paper/make\_figs.py} draws the figures from the same objects and asserts that the fits it draws reproduce the stored real-data values, and that the paired redraw of Fig.~1 reproduces the stored schedule means; no number in the text is taken from the redraw.
+
+\paragraph*{What a reader cannot yet check.} The archive is not public, and the simulator has not been reimplemented independently.
+
+
+\begin{table}[H]
+\tiny\renewcommand{\arraystretch}{0.8}
+\caption{The \nModels\ dated refitted horizons behind every real-data result (version 1.0 runs; $y$ in $\log_2$ minutes; asterisk: the model is one of the \nRecords\ records under the sequential rule, i.e.\ its $y$ exceeds that of every earlier model; dates from METR's release file).}
+\label{tab:horizons}
+\begin{tabular}{lrr|lrr}
+Model & date & $y$ & Model & date & $y$ \\
+\hline
+\input{table_horizons.tex}
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\tiny\renewcommand{\arraystretch}{0.8}
+\caption{Behind the abstract's 20 of 22: per series of the permutation audit, the mean fitted record curvature under a planted \emph{upward} curvature as a multiple of the planted value (1 = unbiased; below 0 = negative fitted curvature; mean over the valid replicates; exploratory).}
+\label{tab:plant}
+\begin{tabular}{lr|lr}
+Series & fitted/planted & Series & fitted/planted \\
+\hline
+\input{table_plant.tex}
+\end{tabular}
+\end{table}
+
+\bibliography{refs}
+
+\end{document}

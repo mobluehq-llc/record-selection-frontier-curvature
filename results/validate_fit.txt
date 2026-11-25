@@ -1,0 +1,7 @@
+runs sha256 ok: True
+models 33 tasks 170 families 50 runs 40836
+max |log2h batched - scipy| over 33 models = 7.67e-09
+bootstrap run-level (300): mean 6.522 sd 0.480 | cell-level (3000): mean 6.512 sd 0.468
+negative control: perturbed data gives different horizon: True
+SOTA (date,name): ['GPT-2', 'davinci-002 (GPT-3)', 'gpt-3.5-turbo-instruct', 'GPT-4 0314', 'GPT-4 1106', 'GPT-4o', 'Claude 3.5 Sonnet (Old)', 'o1-preview', 'Claude 3.5 Sonnet (New)', 'o1', 'Claude 3.7 Sonnet', 'o3', 'Grok 4', 'Claude 4.1 Opus', 'GPT-5', 'GPT-5.1-Codex-Max', 'Claude Opus 4.5']
+hb B=400 time 4.33s

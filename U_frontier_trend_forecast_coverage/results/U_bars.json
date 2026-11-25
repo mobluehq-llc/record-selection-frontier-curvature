@@ -1,0 +1,38 @@
+{
+ "elig": {
+  "compute": true,
+  "metr": true,
+  "gpqa": false,
+  "hw": true,
+  "eci": true
+ },
+ "bars": {
+  "bar1_undercover_cb_upper_lt_95": false,
+  "bar1_practical_lt_85": false,
+  "bar2_series_within_error": 2,
+  "bar2_needed": 4,
+  "bar2_falsifier_fires": false,
+  "bar3_M1": {
+   "pooled_cov": 0.75,
+   "median_width_ratio_vs_M0": 0.7901871129459348,
+   "series_improved": 0,
+   "series_measured": 4,
+   "pass_": false
+  },
+  "bar3_M2": {
+   "pooled_cov": 0.8,
+   "median_width_ratio_vs_M0": 0.7496289815409145,
+   "series_improved": 1,
+   "series_measured": 4,
+   "pass_": false
+  },
+  "bar3_M3": {
+   "pooled_cov": 0.9285714285714286,
+   "median_width_ratio_vs_M0": 1.284140745229922,
+   "series_improved": 1,
+   "series_measured": 2,
+   "pass_": false
+  }
+ },
+ "runtime_s": 8.723340034484863
+}

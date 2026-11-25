@@ -1,0 +1,74 @@
+{
+ "METR v1.0": {
+  "med_w_pps": 0.9586229138277371,
+  "med_w_uni": 0.9586229138277371,
+  "gain": 0.0,
+  "cov_pps": 1.0,
+  "cov_uni": 1.0,
+  "sharp_width": 0.9586229138277371,
+  "c_registered": 0.9586229138277371,
+  "range_pps_union": 1.1365497902606498,
+  "range_uni_union_over_registered": 1.0,
+  "min_cov_pps_corners": 0.9989,
+  "min_cov_uni_corners": 1.0
+ },
+ "METR v1.1": {
+  "med_w_pps": 1.7015220770172181,
+  "med_w_uni": 1.7015220770172181,
+  "gain": 0.0,
+  "cov_pps": 1.0,
+  "cov_uni": 1.0,
+  "sharp_width": 1.7015220770172181,
+  "c_registered": 1.7015220770172181,
+  "range_pps_union": 3.4030441540344363,
+  "range_uni_union_over_registered": 1.3702671829410569,
+  "min_cov_pps_corners": 1.0,
+  "min_cov_uni_corners": 1.0
+ },
+ "Chess Puzzles": {
+  "med_w_pps": 8.642502260048037,
+  "med_w_uni": 8.642502260048037,
+  "gain": 0.0,
+  "cov_pps": 1.0,
+  "cov_uni": 1.0,
+  "sharp_width": 8.642502260048037,
+  "c_registered": 8.642502260048039,
+  "range_pps_union": 34.48248285472178,
+  "range_uni_union_over_registered": 2.2980580042561747,
+  "min_cov_pps_corners": 1.0,
+  "min_cov_uni_corners": 1.0
+ },
+ "FrontierMath-2025-02-28-Private": {
+  "med_w_pps": 11.862072644262877,
+  "med_w_uni": 11.862072644262877,
+  "gain": 0.0,
+  "cov_pps": 1.0,
+  "cov_uni": 1.0,
+  "sharp_width": 11.862072644262877,
+  "c_registered": 11.862072644262879,
+  "range_pps_union": 106.53917005359176,
+  "range_uni_union_over_registered": 2.103967253848578,
+  "min_cov_pps_corners": 1.0,
+  "min_cov_uni_corners": 1.0
+ },
+ "WeirdML": {
+  "med_w_pps": 7.684437667932887,
+  "med_w_uni": 7.684437667932887,
+  "gain": 0.0,
+  "cov_pps": 1.0,
+  "cov_uni": 1.0,
+  "sharp_width": 7.684437667932887,
+  "c_registered": 7.684437667932887,
+  "range_pps_union": 20.027336742998745,
+  "range_uni_union_over_registered": 2.036426036924145,
+  "min_cov_pps_corners": 0.9999,
+  "min_cov_uni_corners": 1.0
+ },
+ "_counterexample_registered_common_range_c": {
+  "n": 12,
+  "nN": 8,
+  "registered_c": 20.550298394755686,
+  "union_range": 26.05500097109549,
+  "ratio": 1.2678648489962838
+ }
+}

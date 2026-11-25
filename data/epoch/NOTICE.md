@@ -1,0 +1,1 @@
+Epoch AI data (benchmark files, `notable_ai_models.csv`, `ml_hardware.csv`): CC BY 4.0, Epoch AI, https://epoch.ai/benchmarks and https://epoch.ai/data. Retrieved 23 November 2026; unmodified. See `epoch_benchmarks/README.md` for the citation.

@@ -1,0 +1,37 @@
+{
+ "T-iid (SOTA, F-test t^2, two-sided 5%)": {
+  "k": 279,
+  "n": 1000,
+  "size": 0.279,
+  "cp_lo": 0.2513862309732197,
+  "cp_hi": 0.30792138735197855
+ },
+ "T-hb (SOTA, B=400 percentile 95% CI excludes 0)": {
+  "k": 354,
+  "n": 1000,
+  "size": 0.354,
+  "cp_lo": 0.324327652518398,
+  "cp_hi": 0.38453497973441547
+ },
+ "[secondary] T-hb one-sided upward (lo>0)": {
+  "k": 340,
+  "n": 1000,
+  "size": 0.34,
+  "cp_lo": 0.31064732250097166,
+  "cp_hi": 0.3702982205023275
+ },
+ "[secondary] T-iid all-models regression": {
+  "k": 87,
+  "n": 1000,
+  "size": 0.087,
+  "cp_lo": 0.07026848607137862,
+  "cp_hi": 0.10620785795702123
+ },
+ "[secondary] T-hb all-models regression": {
+  "k": 239,
+  "n": 1000,
+  "size": 0.239,
+  "cp_lo": 0.21286749037590907,
+  "cp_hi": 0.26667861888521033
+ }
+}

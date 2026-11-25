@@ -1,0 +1,73 @@
+{
+ "source_sha256": "af18dc74a3b97694c2f7e39253d7f1845257fac41ffe400b721d8beefb8e61ae",
+ "numpy": "2.5.5",
+ "scipy": "1.18.1",
+ "full": {
+  "n": 33,
+  "G": 7,
+  "cluster_sizes": {
+   "Alibaba": 2,
+   "Anthropic": 9,
+   "DeepSeek": 4,
+   "Google": 1,
+   "Moonshot": 1,
+   "OpenAI": 15,
+   "xAI": 1
+  },
+  "beta2": 0.13847089577971822,
+  "cr2_t": 1.9855041223997483,
+  "cr2_df": 1.517077434772864,
+  "cr2_p_up": 0.11219756416365378,
+  "cr2_p_two": 0.22439512832730757,
+  "hc3_t": 2.6881434385865983,
+  "hc3_p_up_t(n-3)": 0.0058054386126403495,
+  "webb": {
+   "B": 99999,
+   "p_up": 0.09418,
+   "p_dn": 0.90583,
+   "p_two": 0.18783,
+   "null_t_q95": 2.54845877409156,
+   "null_t_q975": 3.034449953772989
+  },
+  "rademacher_exact": {
+   "patterns": 128,
+   "p_up": 0.0859375,
+   "p_two": 0.171875,
+   "note": "observed t is one of the enumerated patterns (all +1)"
+  }
+ },
+ "drop_gpt2_gpt3": {
+  "n": 31,
+  "G": 7,
+  "cluster_sizes": {
+   "Alibaba": 2,
+   "Anthropic": 9,
+   "DeepSeek": 4,
+   "Google": 1,
+   "Moonshot": 1,
+   "OpenAI": 13,
+   "xAI": 1
+  },
+  "beta2": 0.2315672889296116,
+  "cr2_t": 1.3062435770855103,
+  "cr2_df": 1.7597397144140914,
+  "cr2_p_up": 0.16811979161662938,
+  "cr2_p_two": 0.33623958323325875,
+  "hc3_t": 0.5005848137046339,
+  "hc3_p_up_t(n-3)": 0.31028778171512356,
+  "webb": {
+   "B": 99999,
+   "p_up": 0.0604,
+   "p_dn": 0.93961,
+   "p_two": 0.12095,
+   "null_t_q95": 1.3469099201478252,
+   "null_t_q975": 1.5641412151562082
+  },
+  "rademacher_exact": {
+   "patterns": 128,
+   "p_up": 0.0625,
+   "p_two": 0.125,
+   "note": "observed t is one of the enumerated patterns (all +1)"
+  }
+ }
+}

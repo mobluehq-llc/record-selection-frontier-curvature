@@ -1,0 +1,37 @@
+{
+ "what": "Gaussian schedule illustration, exponential truth, sigma = sigma_m",
+ "reps": 40000,
+ "rate": 1.7392857142857143,
+ "span_years": 6.776180698151951,
+ "sigma": 0.94268798828125,
+ "seed": "SeedSequence([4713, k])",
+ "rows": {
+  "real": {
+   "mean_beta2_sota": 0.06419733725999831,
+   "se_sota": 0.00040268101030852655,
+   "n_valid": 40000,
+   "mean_records": 11.27705,
+   "rr_eq_sota": 1.6670578507186335,
+   "mean_beta2_all": -0.0004746335981386995,
+   "se_all": 0.00027447605231683994
+  },
+  "even": {
+   "mean_beta2_sota": -0.01919494439507329,
+   "se_sota": 0.00033155694177872195,
+   "n_valid": 40000,
+   "mean_records": 15.252125,
+   "rr_eq_sota": 0.8608413356216542,
+   "mean_beta2_all": 0.00020015455197188229,
+   "se_all": 0.00022524149872781742
+  },
+  "reflected": {
+   "mean_beta2_sota": -0.02507707784597392,
+   "se_sota": 0.0003875558640025075,
+   "n_valid": 40000,
+   "mean_records": 10.87885,
+   "rr_eq_sota": 0.8219927759457325,
+   "mean_beta2_all": -0.00020698249490752163,
+   "se_all": 0.00027452016698863624
+  }
+ }
+}
