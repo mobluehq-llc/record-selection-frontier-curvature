@@ -1,4 +1,4 @@
-# Claims ledger (F bundle, arXiv v10)
+# Claims ledger (F bundle, arXiv v18)
 Headline numbers of the abstract (`paper/ABSTRACT.txt`, from `paper/main.tex`), each tied to (a) its macro in `paper/numbers.tex`, (b) the abstract text, and (c) the stored result file it was computed from where a single file carries it.
 `make verify` first regenerates ALL 693 macros and 19 tables of the paper from the stored results (`paper/make_numbers.py`; every macro in `paper/numbers_manifest.txt` names its source file and key) and requires them to equal the arXiv v10 files; it then checks the rows below.
 Evidence paths are relative to this file; checks use the verify.py grammar.
@@ -8,17 +8,17 @@ Evidence paths are relative to this file; checks use the verify.py grammar.
 | 1 | Abstract number 1.76-fold: macro \biasRrSota = 1.76 | paper/numbers.tex | `grep:\\newcommand\{\\biasRrSota\}\{1\.76\}` | verified |
 | 2 | Abstract text states '1.76-fold' | paper/ABSTRACT.txt | `grep:1\.76\-fold` | verified |
 | 3 | Abstract number negative on 6 of 7: macro \cfNeg = 6 | paper/numbers.tex | `grep:\\newcommand\{\\cfNeg\}\{6\}` | verified |
-| 4 | Abstract text states 'negative on 6 of 7' | paper/ABSTRACT.txt | `grep:negative\ on\ 6\ of\ 7` | verified |
+| 4 | Abstract text states 'downward on 6 of 7' | paper/ABSTRACT.txt | `grep:downward\ on\ 6\ of\ 7` | verified |
 | 5 | Abstract number negative on 6 of 7: macro \cfOther = 7 | paper/numbers.tex | `grep:\\newcommand\{\\cfOther\}\{7\}` | verified |
-| 6 | Abstract text states 'negative on 6 of 7' | paper/ABSTRACT.txt | `grep:negative\ on\ 6\ of\ 7` | verified |
+| 6 | Abstract text states '6 of 7 alternative schedules' | paper/ABSTRACT.txt | `grep:6\ of\ 7\ alternative\ schedules` | verified |
 | 7 | Abstract number in 20 of 22: macro \mbBiasNegSign = 20 | paper/numbers.tex | `grep:\\newcommand\{\\mbBiasNegSign\}\{20\}` | verified |
-| 8 | Abstract text states 'in 20 of 22' | paper/ABSTRACT.txt | `grep:in\ 20\ of\ 22` | verified |
+| 8 | Abstract text states 'downward in 20 of them' | paper/ABSTRACT.txt | `grep:downward\ in\ 20\ of\ them` | verified |
 | 9 | Abstract number in 20 of 22: macro \mbN = 22 | paper/numbers.tex | `grep:\\newcommand\{\\mbN\}\{22\}` | verified |
-| 10 | Abstract text states 'in 20 of 22' | paper/ABSTRACT.txt | `grep:in\ 20\ of\ 22` | verified |
+| 10 | Abstract text states '22 public AI benchmarks' | paper/ABSTRACT.txt | `grep:22\ public\ AI\ benchmarks` | verified |
 | 11 | Abstract number 27.9%: macro \powMaxTwo = 27.9 | paper/numbers.tex | `grep:\\newcommand\{\\powMaxTwo\}\{27\.9\}` | verified |
-| 12 | Abstract text states '27.9%' | paper/ABSTRACT.txt | `grep:27\.9%` | verified |
+| 12 | 27.9% left the abstract in v18; the macro is still used in the paper text | paper/main.tex | `grep:\\powMaxTwo` | verified |
 | 13 | Abstract number reached 34%: macro \aTwoPowHcTwoRound = 34 | paper/numbers.tex | `grep:\\newcommand\{\\aTwoPowHcTwoRound\}\{34\}` | verified |
-| 14 | Abstract text states 'reached 34%' | paper/ABSTRACT.txt | `grep:reached\ 34%` | verified |
+| 14 | Abstract text states '34% power' | paper/ABSTRACT.txt | `grep:34%\ power` | verified |
 | 15 | Abstract number p = 0.24: macro \realSotaPup = 0.24 | paper/numbers.tex | `grep:\\newcommand\{\\realSotaPup\}\{0\.24\}` | verified |
 | 16 | Abstract text states 'p = 0.24' | paper/ABSTRACT.txt | `grep:p\ =\ 0\.24` | verified |
 | 17 | Abstract number p = 0.0058: macro \hcPup = 0.0058 | paper/numbers.tex | `grep:\\newcommand\{\\hcPup\}\{0\.0058\}` | verified |
@@ -28,7 +28,7 @@ Evidence paths are relative to this file; checks use the verify.py grammar.
 | 21 | Abstract number oversized in 18 of 22: macro \mbBarOne = 18 | paper/numbers.tex | `grep:\\newcommand\{\\mbBarOne\}\{18\}` | verified |
 | 22 | Abstract text states 'oversized in 18 of 22' | paper/ABSTRACT.txt | `grep:oversized\ in\ 18\ of\ 22` | verified |
 | 23 | Abstract number gives 14 of 22: macro \mbIidTwoOverAtt = 14 | paper/numbers.tex | `grep:\\newcommand\{\\mbIidTwoOverAtt\}\{14\}` | verified |
-| 24 | Abstract text states 'gives 14 of 22' | paper/ABSTRACT.txt | `grep:gives\ 14\ of\ 22` | verified |
+| 24 | Abstract text states '14 of 22 counting' | paper/ABSTRACT.txt | `grep:14\ of\ 22\ counting` | verified |
 | 25 | Abstract number (33 models: macro \nModels = 33 | paper/numbers.tex | `grep:\\newcommand\{\\nModels\}\{33\}` | verified |
 | 26 | Abstract text states '(33 models' | paper/ABSTRACT.txt | `grep:\(33\ models` | verified |
 | 27 | 33 models, 17 records in the METR v1.0 real-data run | real_data/out/real_v10.json | `json:M == 33` | verified |

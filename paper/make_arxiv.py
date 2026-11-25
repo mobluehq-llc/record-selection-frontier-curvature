@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the arXiv version of paper F: F_arxiv_v10.pdf, F_arxiv_supplement_v10.pdf, F_arxiv_source_v10.tar.gz.
+"""Build the arXiv version of paper F: F_arxiv_v18.pdf, F_arxiv_supplement_v18.pdf, F_arxiv_source_v18.tar.gz.
 Run after ./build.sh (needs the current main.bbl, supplement.bbl, main.aux, supplement.aux, numbers.tex, table_*.tex, figs/).
 Usage: python3 make_arxiv.py OUTDIR
 The source bundle holds sanitized copies (comments removed, draft marking branches resolved to the arXiv form).
@@ -8,7 +8,7 @@ import os, re, sys, shutil, subprocess, tarfile, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.abspath(sys.argv[1]); os.makedirs(OUT, exist_ok=True)
 FLAGLINE = r"\newif\ifarxiv \IfFileExists{arxiv.flag}{\arxivtrue}{\arxivfalse}"
 HOOK = r"\ifarxiv\else\AddToHook{shipout/foreground}{\put(0.5\paperwidth,-0.42in){\makebox[0pt]{\small\sffamily DRAFT, not for distribution}}}\fi"
-DATE = r"\date{\ifarxiv 25 November 2026\else Draft v10 of 25 November 2026. DRAFT, not for distribution.\fi}"
+DATE = r"\date{\ifarxiv 26 November 2026\else Draft v18 of 26 November 2026. DRAFT, not for distribution.\fi}"
 def strip_comments(s):
     out = []
     for ln in s.split("\n"):
@@ -20,7 +20,7 @@ def strip_comments(s):
 def sanitize(name, s):
     if name in ("main.tex", "supplement.tex"):
         s = strip_comments(s)
-        for a, b in ((FLAGLINE, ""), (HOOK, ""), (DATE, r"\date{25 November 2026}")):
+        for a, b in ((FLAGLINE, ""), (HOOK, ""), (DATE, r"\date{26 November 2026}")):
             assert a in s, (name, a[:40]); s = s.replace(a, b)
         s = s.replace(r"\ifarxiv", "")  # no leftovers expected
         assert "arxiv.flag" not in s and "arxivtrue" not in s and "DRAFT, not" not in s, name
@@ -65,8 +65,8 @@ for t in ("main", "supplement"):
     txt = subprocess.run(["pdftotext", os.path.join(w, t + ".pdf"), "-"], capture_output=True, text=True).stdout
     assert "[?" not in txt and "?]" not in txt and "??" not in txt, (t, "unresolved citation")
     nb = open(os.path.join(src, t + ".bbl")).read().count("\\bibitem"); assert nb >= (25 if t == "main" else 4), (t, nb); print(t, "bibitems", nb)
-shutil.copy(os.path.join(w, "main.pdf"), os.path.join(OUT, "F_arxiv_v10.pdf")); shutil.copy(os.path.join(w, "supplement.pdf"), os.path.join(OUT, "F_arxiv_supplement_v10.pdf"))
-tp = os.path.join(OUT, "F_arxiv_source_v10.tar.gz")
+shutil.copy(os.path.join(w, "main.pdf"), os.path.join(OUT, "F_arxiv_v18.pdf")); shutil.copy(os.path.join(w, "supplement.pdf"), os.path.join(OUT, "F_arxiv_supplement_v18.pdf"))
+tp = os.path.join(OUT, "F_arxiv_source_v18.tar.gz")
 with tarfile.open(tp, "w:gz") as tf:
     for root, _, fs in os.walk(src):
         for f in sorted(fs): p = os.path.join(root, f); tf.add(p, arcname=os.path.relpath(p, src), filter=lambda ti: (setattr(ti, "uid", 0), setattr(ti, "gid", 0), setattr(ti, "uname", ""), setattr(ti, "gname", ""), setattr(ti, "mtime", 0), ti)[-1])

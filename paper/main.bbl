@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{32}%
+\begin{thebibliography}{30}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -79,6 +79,41 @@
   \url{https://epoch.ai/blog/have-ai-capabilities-accelerated}} (\bibinfo
   {year} {2026}),\ \bibinfo {note} {accessed 23 November 2026}\BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {{METR}}(2026{\natexlab{a}})}]{metr2026limits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{METR}}},\ }\href@noop
+  {} {\bibinfo {title} {Clarifying limitations of time horizon}},\ \bibinfo
+  {howpublished} {22 January 2026,
+  \url{https://metr.substack.com/p/2026-01-22-time-horizon-limitations}}
+  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note} {accessed 23
+  November 2026}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nguyen}\ and\ \citenamefont
+  {Fithian}(2026)}]{nguyen2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~T.}\ \bibnamefont
+  {Nguyen}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Fithian}},\ }\href@noop {} {\bibinfo {title} {On the estimation and validity
+  of {AI} time horizons: a statistical look at the {METR} plot}},\ \bibinfo
+  {howpublished} {arXiv:2610.12466} (\bibinfo {year} {2026}),\ \bibinfo {note}
+  {submitted 8 October 2026; accessed 25 November 2026}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Smith}(1988)}]{smith1988}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~L.}\ \bibnamefont
+  {Smith}},\ }\bibfield  {title} {\bibinfo {title} {Forecasting records by
+  maximum likelihood},\ }\href {https://doi.org/10.1080/01621459.1988.10478602}
+  {\bibfield  {journal} {\bibinfo  {journal} {J. Am. Stat. Assoc.}\ }\textbf
+  {\bibinfo {volume} {83}},\ \bibinfo {pages} {331} (\bibinfo {year}
+  {1988})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Feuerverger}\ and\ \citenamefont
+  {Hall}(1996)}]{feuerverger1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Feuerverger}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Hall}},\ }\bibfield  {title} {\bibinfo {title} {On distribution-free
+  inference for record-value data with trend},\ }\href
+  {https://doi.org/10.1214/aos/1032181174} {\bibfield  {journal} {\bibinfo
+  {journal} {Ann. Stat.}\ }\textbf {\bibinfo {volume} {24}},\ \bibinfo {pages}
+  {2655} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Arnold}\ \emph {et~al.}(1998)\citenamefont {Arnold},
   \citenamefont {Balakrishnan},\ and\ \citenamefont {Nagaraja}}]{arnold1998}%
   \BibitemOpen
@@ -136,24 +171,6 @@
   {journal} {\bibinfo  {journal} {J. Climate}\ }\textbf {\bibinfo {volume}
   {39}},\ \bibinfo {pages} {209} (\bibinfo {year} {2026})}\BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Smith}(1988)}]{smith1988}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~L.}\ \bibnamefont
-  {Smith}},\ }\bibfield  {title} {\bibinfo {title} {Forecasting records by
-  maximum likelihood},\ }\href {https://doi.org/10.1080/01621459.1988.10478602}
-  {\bibfield  {journal} {\bibinfo  {journal} {J. Am. Stat. Assoc.}\ }\textbf
-  {\bibinfo {volume} {83}},\ \bibinfo {pages} {331} (\bibinfo {year}
-  {1988})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Feuerverger}\ and\ \citenamefont
-  {Hall}(1996)}]{feuerverger1996}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {Feuerverger}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Hall}},\ }\bibfield  {title} {\bibinfo {title} {On distribution-free
-  inference for record-value data with trend},\ }\href
-  {https://doi.org/10.1214/aos/1032181174} {\bibfield  {journal} {\bibinfo
-  {journal} {Ann. Stat.}\ }\textbf {\bibinfo {volume} {24}},\ \bibinfo {pages}
-  {2655} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Foster}\ and\ \citenamefont
   {Stuart}(1954)}]{foster1954}%
   \BibitemOpen
@@ -184,22 +201,6 @@
   a specification error},\ }\href {https://doi.org/10.2307/1912352} {\bibfield
   {journal} {\bibinfo  {journal} {Econometrica}\ }\textbf {\bibinfo {volume}
   {47}},\ \bibinfo {pages} {153} (\bibinfo {year} {1979})}\BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {{METR}}(2026{\natexlab{a}})}]{metr2026limits}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{METR}}},\ }\href@noop
-  {} {\bibinfo {title} {Clarifying limitations of time horizon}},\ \bibinfo
-  {howpublished} {22 January 2026,
-  \url{https://metr.substack.com/p/2026-01-22-time-horizon-limitations}}
-  (\bibinfo {year} {2026}{\natexlab{a}}),\ \bibinfo {note} {accessed 23
-  November 2026}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Efron}(1979)}]{efron1979}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
-  {Efron}},\ }\bibfield  {title} {\bibinfo {title} {Bootstrap methods: another
-  look at the jackknife},\ }\href {https://doi.org/10.1214/aos/1176344552}
-  {\bibfield  {journal} {\bibinfo  {journal} {Ann. Stat.}\ }\textbf {\bibinfo
-  {volume} {7}},\ \bibinfo {pages} {1} (\bibinfo {year} {1979})}\BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Horvitz}\ and\ \citenamefont
   {Thompson}(1952)}]{horvitz1952}%
@@ -241,16 +242,6 @@
   {\bibfield  {journal} {\bibinfo  {journal} {J. Econometrics}\ }\textbf
   {\bibinfo {volume} {146}},\ \bibinfo {pages} {162} (\bibinfo {year}
   {2008})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Freedman}\ and\ \citenamefont
-  {Lane}(1983)}]{freedman1983}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {Freedman}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {Lane}},\ }\bibfield  {title} {\bibinfo {title} {A nonstochastic
-  interpretation of reported significance levels},\ }\href
-  {https://doi.org/10.1080/07350015.1983.10509354} {\bibfield  {journal}
-  {\bibinfo  {journal} {J. Bus. Econ. Stat.}\ }\textbf {\bibinfo {volume}
-  {1}},\ \bibinfo {pages} {292} (\bibinfo {year} {1983})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Clopper}\ and\ \citenamefont
   {Pearson}(1934)}]{clopper1934}%
   \BibitemOpen
@@ -261,6 +252,13 @@
   {https://doi.org/10.1093/biomet/26.4.404} {\bibfield  {journal} {\bibinfo
   {journal} {Biometrika}\ }\textbf {\bibinfo {volume} {26}},\ \bibinfo {pages}
   {404} (\bibinfo {year} {1934})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Epoch AI}}(2026)}]{epochdata}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Epoch AI}}},\
+  }\href@noop {} {\bibinfo {title} {{AI} benchmarking data
+  (\texttt{benchmark\_data.zip})}},\ \bibinfo {howpublished}
+  {\url{https://epoch.ai/data}} (\bibinfo {year} {2026}),\ \bibinfo {note}
+  {retrieved 23 November 2026; CC BY 4.0}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Gelman}\ and\ \citenamefont
   {Carlin}(2014)}]{gelman2014}%
   \BibitemOpen
@@ -271,13 +269,6 @@
   {https://doi.org/10.1177/1745691614551642} {\bibfield  {journal} {\bibinfo
   {journal} {Perspect. Psychol. Sci.}\ }\textbf {\bibinfo {volume} {9}},\
   \bibinfo {pages} {641} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{Epoch AI}}(2026)}]{epochdata}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Epoch AI}}},\
-  }\href@noop {} {\bibinfo {title} {{AI} benchmarking data
-  (\texttt{benchmark\_data.zip})}},\ \bibinfo {howpublished}
-  {\url{https://epoch.ai/data}} (\bibinfo {year} {2026}),\ \bibinfo {note}
-  {retrieved 23 November 2026; CC BY 4.0}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Holm}(1979)}]{holm1979}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
@@ -350,13 +341,4 @@
   January 2026, \url{https://metr.org/blog/2026-01-29-time-horizon-1-1/}}
   (\bibinfo {year} {2026}{\natexlab{d}}),\ \bibinfo {note} {accessed 24
   November 2026}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Nguyen}\ and\ \citenamefont
-  {Fithian}(2026)}]{nguyen2026}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~T.}\ \bibnamefont
-  {Nguyen}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
-  {Fithian}},\ }\href@noop {} {\bibinfo {title} {On the estimation and validity
-  of {AI} time horizons: a statistical look at the {METR} plot}},\ \bibinfo
-  {howpublished} {arXiv:2610.12466} (\bibinfo {year} {2026}),\ \bibinfo {note}
-  {submitted 8 October 2026; accessed 25 November 2026}\BibitemShut {NoStop}%
 \end{thebibliography}%

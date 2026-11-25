@@ -32,3 +32,5 @@ Some of these files were pinned by SHA-256 before the runs (`real_data/PINS.txt`
 | `paper/make_numbers.py` | `544a2e8daa9c95e2e9173ab0f1011ec0c3a96981fbb23f1c8fc305bf674a094f` | `da2857cbf33cf1c45f6136195076deed649dc83188321864d2cf191892ac50cf` |
 
 Line-level redactions of internal operations notes in the narrative files (`*.md`, logs) are recorded in `REDACTIONS.md`.
+
+Release v1.1: `paper/make_numbers.py` was replaced by the v18 builder with the same path patch re-applied (bundle sha256 `fe9a13d101085765dddc5bb9fcaa0f235a45784c2feb38ef45122ffc8a056a3e`); the v1.0 row above records the v10 builder.

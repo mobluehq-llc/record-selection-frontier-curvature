@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "Record selection can mimic or mask acceleration in AI benchmarks"
 type: software
-version: "1.0"
+version: "1.1"
 date-released: "2026-11-25"
 authors:
   - family-names: Faust
@@ -10,5 +10,5 @@ authors:
     affiliation: "MOBLUEHQ, Inc."
 license: MIT
 repository-code: "https://github.com/mobluehq-llc/record-selection-frontier-curvature"
-doi: "10.5281/zenodo.24521481"
-abstract: "Reproducibility bundle for paper F (record selection and acceleration tests on AI capability trends): simulators, likelihoods, cluster-robust and permutation-audit code, stored results, pre-registration texts, the arXiv v10 source, and a one-command regeneration of every number in the paper."
+doi: "10.5281/zenodo.24521480"
+abstract: "Reproducibility bundle for paper F (record selection and acceleration tests on AI capability trends): simulators, likelihoods, cluster-robust and permutation-audit code, stored results, pre-registration texts, the arXiv v18 source, and a one-command regeneration of every number in the paper."

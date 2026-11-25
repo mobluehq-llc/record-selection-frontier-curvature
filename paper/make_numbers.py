@@ -338,6 +338,7 @@ for k in ("ols", "hc3", "wild", "perm", "mb_all"):
         put("aTwoPow%s%s" % (N2[k], K), f(padj(pw2[(a_, k)]), 1), src, "acceleration power table %s %s adjusted" % (a_, k))
     put("aTwoRaw%sTwo" % N2[k], f(praw(pw2[("R_rr2", k)]), 1), src, "acceleration power table R_rr2 %s raw" % k)
 x = pw2[("R_rr2", "hc3")]; put("aTwoPowHcTwoLo", f(cpi2(x)[0], 1), src, "R_rr2 hc3 adjusted interval lo"); put("aTwoPowHcTwoHi", f(cpi2(x)[1], 1), src, "hi")
+x = pw2[("R_rr2", "wild")]; put("aTwoPowWildTwoLo", f(cpi2(x)[0], 1), src, "R_rr2 wild adjusted interval lo"); put("aTwoPowWildTwoHi", f(cpi2(x)[1], 1), src, "hi")
 assert padj(pw2[("R_rr2", "hc3")]) == padj(pw2[("R_rr2", "wild")]) and padj(pw2[("R_rr2", "ols")]) == padj(pw2[("R_rr2", "perm")])   # same statistic, same adjusted power
 assert all(padj(pw2[("R_rr2", k)]) < 80 for k in T2) and padj(pw2[("R_rr4", "hc3")]) < 80 and padj(pw2[("R_rr4", "ols")]) > 80 and padj(pw2[("R_rr3", "ols")]) < 80
 put("aTwoPowHcTwoRound", f(padj(pw2[("R_rr2", "hc3")]), 0), src, "R_rr2 hc3 adjusted, rounded")
@@ -550,6 +551,8 @@ put("proxAvailP", pq(AB["A"][prox[1][1]]["observed"]["hc3_p_up"]), srcf, "A S1 H
 put("tieNameN", AB["C"]["observed"]["name"]["n_rec"], srcf, "C observed records, frozen order"); put("tieRevN", AB["C"]["observed"]["rev"]["n_rec"], srcf, "C reverse order"); put("tieGroupN", AB["C"]["observed"]["group"]["n_rec"], srcf, "C group rule")
 rc_ = AB["C"]["observed"]["random_within_day_nrec_counts"]; put("tieRandSeventeen", rc_["17"], srcf, "C 100 random within-day orders giving 17 records"); put("tieRandEighteen", rc_["18"], srcf, "C ... giving 18")
 put("tieSimName", sgn(AB["C"]["sim"]["name"]["beta2_rec"], 4), srcf, "C sim name rule"); put("tieSimGroup", sgn(AB["C"]["sim"]["group"]["beta2_rec"], 4), srcf, "C sim group rule"); put("tieSimRev", sgn(AB["C"]["sim"]["rev"]["beta2_rec"], 4), srcf, "C sim reverse rule")
+_q = lambda b: b * R["span_years"] / V["params"]["rate_null"]
+put("tieRrName", f((1 + _q(AB["C"]["sim"]["name"]["beta2_rec"])) / (1 - _q(AB["C"]["sim"]["name"]["beta2_rec"])), 2), srcf, "rr_eq of C sim name-rule curvature at reference span and rate"); put("tieRrGroup", f((1 + _q(AB["C"]["sim"]["group"]["beta2_rec"])) / (1 - _q(AB["C"]["sim"]["group"]["beta2_rec"])), 2), srcf, "rr_eq of C sim group-rule (best model per day) curvature")
 lv = AB["F"]["leverage"]; put("levOpenAI", f(100 * lv["by_developer"]["OpenAI"], 0), srcf, "F leverage OpenAI share %"); put("levGptTwo", f(100 * lv["by_model"]["GPT-2"], 0), srcf, "F leverage GPT-2 share %"); put("levAnthropic", f(100 * lv["by_developer"]["Anthropic"], 0), srcf, "F leverage Anthropic share %")
 lo_ = AB["F"]["loo"]; put("looOpenAIP", pq(lo_["OpenAI"]["hc3_p_up"]), srcf, "F LOO OpenAI HC3 p_up"); put("looOpenAIBeta", sgn(lo_["OpenAI"]["beta2_all"], 3), srcf, "F LOO OpenAI beta2"); put("looAnthP", pq(lo_["Anthropic"]["hc3_p_up"]), srcf, "F LOO Anthropic HC3 p_up"); put("looOpenAIRec", sgn(lo_["OpenAI"]["beta2_rec"], 3), srcf, "F LOO OpenAI record beta2")
 put("looOtherPMax", pq(max(v["hc3_p_up"] for k, v in lo_.items() if k not in ("OpenAI", "Anthropic")), ), srcf, "F LOO largest HC3 p_up among the five other developers")
@@ -583,6 +586,11 @@ assert abs(hr["Q"]["coef"][2] - R["pb"]["c_all"]) < 1e-6
 put("hgCQHp", pv(ht["QH_c"]["p_two"]), srch, "real_tests.QH_c.p_two (Webb wild cluster)"); put("hgJointGivenC", pv(ht["QH_dg_joint"]["p"]), srch, "real_tests.QH_dg_joint.p")
 put("hgD", sgn(hr["H"]["coef"][2], 2), srch, "real_fit.H.coef[2] level jump (log2 units)"); put("hgG", sgn(hr["H"]["coef"][3], 2), srch, "real_fit.H.coef[3] slope change (doublings/yr)")
 put("hgDp", pv(ht["H_d"]["p_two"]), srch, "real_tests.H_d.p_two"); put("hgGp", pv(ht["H_g"]["p_two"]), srch, "real_tests.H_g.p_two"); put("hgJointP", pv(ht["H_dg_joint"]["p"]), srch, "real_tests.H_dg_joint.p")
+# v18: Table S15 uses AICc with the residual variance counted (k = coefficients + 1), re-run on trench by code/hinge_aiccv.py (same seeds and draws)
+HVD = os.path.join(F, "results", "hinge_aiccv"); HV = {k_: json.load(open(os.path.join(HVD, k_ + ".json"))) for k_ in ("T_L", "T_Q", "T_H", "PC_H", "PC_Q")}
+for k_ in HV: assert all(abs(HV[k_]["select_AICc_coefonly_recomputed"][c_] - hs[k_]["select_AICc"][c_]) < 1e-12 for c_ in "LQH"), k_  # re-run reproduces stored coefficient-only rates exactly
+assert all(abs(HV[k_]["real_AICc_kplus1"][m_] - _aiccv(m_, {"L": 3, "Q": 4, "H": 5}[m_])) < 1e-6 for k_ in HV for m_ in "QH")
+hs = {k_: dict(R=HV[k_]["R"], select_AICc=HV[k_]["select_AICc_kplus1"]) for k_ in HV}; srch = rel(HVD)
 for nm_, k_ in (("TL", "T_L"), ("TQ", "T_Q"), ("TH", "T_H"), ("PCH", "PC_H"), ("PCQ", "PC_Q")):
     for c_ in "LQH": put("hg%sSel%s" % (nm_, c_), pct(hs[k_]["select_AICc"][c_]), srch, "sim.%s.select_AICc.%s (%%)" % (k_, c_))
 assert hs["PC_Q"]["select_AICc"]["Q"] < 0.90 <= hs["PC_H"]["select_AICc"]["H"] and hs["T_H"]["select_AICc"]["Q"] > hs["T_H"]["select_AICc"]["H"]

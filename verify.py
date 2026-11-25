@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""F bundle: (1) regenerate every number and table of the paper from the stored results and require identity with the arXiv v10 files; (2) re-run each CLAIMS.md row's check from its evidence file. Exit 1 on any mismatch,
+"""F bundle: (1) regenerate every number and table of the paper from the stored results and require identity with the shipped arXiv v18 files; (2) re-run each CLAIMS.md row's check from its evidence file. Exit 1 on any mismatch,
 unreadable evidence, or unverifiable row. Silence is never a pass (never silent).
 
 CLAIMS.md row:  | # | claim | evidence | check | status |
@@ -82,12 +82,12 @@ def regen(base):
     strip = lambda p: "\n".join(l for l in p.read_text().splitlines() if not l.startswith("% generated"))
     bad = 0; names = ["numbers.tex"] + sorted(p.name for p in paper.glob("table_*.tex"))
     for nme in names:
-        if not (tmp / nme).is_file() or strip(tmp / nme) != strip(paper / nme): print("FAIL  regen: " + nme + " differs from the shipped arXiv v10 file"); bad += 1
+        if not (tmp / nme).is_file() or strip(tmp / nme) != strip(paper / nme): print("FAIL  regen: " + nme + " differs from the shipped arXiv v18 file"); bad += 1
     nm = len((tmp / "numbers.tex").read_text().split("\\newcommand")) - 1
     nmi = len(re.findall(r"^[A-Za-z]+ = ", (paper / "numbers_manifest.txt").read_text(), re.M))
     if nm != nmi: print(f"FAIL  regen: {nm} macros vs {nmi} manifest lines"); bad += 1
     if (tmp / "numbers_manifest.txt").read_text() != (paper / "numbers_manifest.txt").read_text(): print("FAIL  regen: numbers_manifest.txt differs"); bad += 1
-    if not bad: print(f"PASS  regen: numbers.tex ({nm} macros) and {len(names)-1} tables regenerated from stored results and identical to the arXiv v10 files")
+    if not bad: print(f"PASS  regen: numbers.tex ({nm} macros) and {len(names)-1} tables regenerated from stored results and identical to the shipped arXiv v18 files")
     shutil.rmtree(tmp.parent); return bad
 
 def main():
