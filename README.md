@@ -1,8 +1,10 @@
 # Record selection can mimic or mask acceleration in AI benchmarks
 
-Reproducibility bundle for paper F (arXiv version v10). **Staged 24 November 2026; not yet published (no repository URL or DOI yet).**
+Reproducibility bundle for paper F (arXiv version v10).
 
 **Author:** Adam Faust, MOBLUEHQ, Inc. See `CITATION.cff`.
+
+**Cite as:** Adam Faust, MOBLUEHQ, Inc. Release v1.0, Zenodo, https://doi.org/10.5281/zenodo.24521481 . Repository: https://github.com/mobluehq-llc/record-selection-frontier-curvature . See `CITATION.cff`.
 
 ## What the paper is
 Acceleration claims for AI capability trends are often read off the best-so-far (record) curve of a benchmark. The paper simulates steady exponential progress on the release calendar and task structure of the public METR time-horizon data, shows that a quadratic fitted to the record-setting models has a spurious curvature, audits record-based and all-model tests on 22 Epoch AI benchmark series with date permutation and trend planting, and re-analyses the real METR series with cluster-robust (CR2, Webb) and permutation tests. Gated, confirmatory, corrective and exploratory results are labelled as such in the paper.
